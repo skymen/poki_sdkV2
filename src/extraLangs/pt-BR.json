@@ -1,0 +1,177 @@
+{
+  "languageTag": "pt-BR",
+  "fileDescription": "Strings para avix_pokisdk_forc3.",
+  "text": {
+    "plugins": {
+      "avix_pokisdk_forc3": {
+        "name": "Poki SDK",
+        "description": "Plugin simples para jogos hospedados na plataforma Poki (https://sdk.poki.com/)",
+        "help-url": "https://sdk.poki.com/",
+        "aceCategories": {
+          "ads": "anúncios",
+          "analytics": "análises",
+          "gameplay": "jogabilidade",
+          "misc": "diversos"
+        },
+        "properties": {
+          "enabled": {
+            "name": "Ativado",
+            "desc": "Se o SDK está ativado",
+            "items": {
+              "disabled": "Desativado",
+              "enabled_export": "Ativado na exportação",
+              "enabled": "Ativado"
+            }
+          },
+          "debug": {
+            "name": "Modo de depuração na visualização",
+            "desc": "Se deve habilitar o modo de depuração"
+          },
+          "gameId": {
+            "name": "Configuração",
+            "desc": "Dados de configuração para passar para o SDK"
+          },
+          "doBeacon": {
+            "name": "Enviar beacon",
+            "desc": "Se deve enviar beacons para o Poki"
+          },
+          "beaconInterval": {
+            "name": "Intervalo do beacon",
+            "desc": "Número de segundos entre beacons"
+          },
+          "maxBeacons": {
+            "name": "Beacons máximos",
+            "desc": "Número máximo de beacons a serem enviados"
+          },
+          "loadingNotification": {
+            "name": "Notificação de carregamento",
+            "desc": "Quando notificar o DOM que o jogo terminou de carregar",
+            "items": {
+              "immediate": "Imediato",
+              "afterFirstLayout": "Após o primeiro layout",
+              "manual": "Manual"
+            }
+          },
+          "automaticSuspend": {
+            "name": "Suspensão automática",
+            "desc": "Suspender automaticamente o SDK quando o jogo for suspenso"
+          },
+          "suspendTimeout": {
+            "name": "Tempo limite de suspensão",
+            "desc": "Número de segundos a aguardar antes de suspender o SDK"
+          }
+        },
+        "actions": {
+          "Interstitial": {
+            "list-name": "Interstitial",
+            "display-text": "Solicitar anúncio intersticial [i]{0}[/i]",
+            "description": "Solicitar um anúncio intersticial",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "A tag do anúncio"
+              }
+            }
+          },
+          "Rewarded": {
+            "list-name": "Rewarded",
+            "display-text": "Solicitar anúncio recompensado [i]{0}[/i]",
+            "description": "Solicitar um anúncio recompensado",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "A tag do anúncio"
+              }
+            }
+          },
+          "SendEvent": {
+            "list-name": "Enviar Evento",
+            "display-text": "Enviar Evento de Análise [i]{0}[/i], [i]{1}[/i], [i]{2}[/i]",
+            "description": "Enviar um evento de análise",
+            "params": {
+              "category": {
+                "name": "Categoria",
+                "desc": "A categoria do evento"
+              },
+              "action": {
+                "name": "Ação",
+                "desc": "A ação do evento"
+              },
+              "label": {
+                "name": "Rótulo",
+                "desc": "O rótulo do evento"
+              }
+            }
+          },
+          "GameplayStart": {
+            "list-name": "Início da Jogabilidade",
+            "display-text": "Início da Jogabilidade",
+            "description": "Notificar o SDK que a jogabilidade começou",
+            "params": {}
+          },
+          "GameplayStop": {
+            "list-name": "Fim da Jogabilidade",
+            "display-text": "Fim da Jogabilidade",
+            "description": "Notificar o SDK que a jogabilidade parou",
+            "params": {}
+          },
+          "LoadingEnd": {
+            "list-name": "Fim do Carregamento",
+            "display-text": "Fim do Carregamento",
+            "description": "Notificar manualmente o SDK que o jogo terminou de carregar",
+            "params": {}
+          }
+        },
+        "conditions": {
+          "LastRewardedSuccess": {
+            "list-name": "Último Sucesso Recompensado",
+            "display-text": "Último Sucesso Recompensado",
+            "description": "Último Sucesso Recompensado",
+            "params": {}
+          },
+          "OnIntertsitialComplete": {
+            "list-name": "Ao Concluir Anúncio Intersticial",
+            "display-text": "Ao Concluir Anúncio Intersticial [i]{0}[/i]",
+            "description": "Acionado quando um anúncio intersticial é concluído",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "A tag do anúncio"
+              }
+            }
+          },
+          "OnRewardedComplete": {
+            "list-name": "Ao Concluir Anúncio Recompensado",
+            "display-text": "Ao Concluir Anúncio Recompensado [i]{0}[/i]",
+            "description": "Acionado quando um anúncio recompensado é concluído",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "A tag do anúncio"
+              }
+            }
+          },
+          "IsEnabled": {
+            "list-name": "SDK Está Ativado",
+            "display-text": "SDK está ativado",
+            "description": "Verificar se o SDK está ativado",
+            "params": {}
+          },
+          "IsLoaded": {
+            "list-name": "SDK Está Carregado",
+            "display-text": "SDK está carregado",
+            "description": "Verificar se o SDK está carregado",
+            "params": {}
+          }
+        },
+        "expressions": {
+          "LastRewardedSuccess": {
+            "translated-name": "ÚltimoSucessoRecompensado",
+            "description": "Último Sucesso Recompensado",
+            "params": {}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "languageTag": "fr-FR",
+  "fileDescription": "Chaînes pour avix_pokisdk_forc3.",
+  "text": {
+    "plugins": {
+      "avix_pokisdk_forc3": {
+        "name": "Poki SDK",
+        "description": "Plugin simple pour les jeux hébergés sur la plateforme Poki (https://sdk.poki.com/)",
+        "help-url": "https://sdk.poki.com/",
+        "aceCategories": {
+          "ads": "publicités",
+          "analytics": "analytique",
+          "gameplay": "gameplay",
+          "misc": "divers"
+        },
+        "properties": {
+          "enabled": {
+            "name": "Activé",
+            "desc": "Indique si le SDK est activé",
+            "items": {
+              "disabled": "Désactivé",
+              "enabled_export": "Activé lors de l'exportation",
+              "enabled": "Activé"
+            }
+          },
+          "debug": {
+            "name": "Mode de débogage lors de la prévisualisation",
+            "desc": "Indique si le mode de débogage est activé"
+          },
+          "gameId": {
+            "name": "Configuration",
+            "desc": "Données de configuration à transmettre au SDK"
+          },
+          "doBeacon": {
+            "name": "Envoyer des balises",
+            "desc": "Indique si les balises doivent être envoyées à Poki"
+          },
+          "beaconInterval": {
+            "name": "Intervalle de balise",
+            "desc": "Nombre de secondes entre les balises"
+          },
+          "maxBeacons": {
+            "name": "Nombre maximal de balises",
+            "desc": "Nombre maximal de balises à envoyer"
+          },
+          "loadingNotification": {
+            "name": "Notification de chargement",
+            "desc": "Quand notifier le DOM que le jeu a fini de charger",
+            "items": {
+              "immediate": "Immédiatement",
+              "afterFirstLayout": "Après le premier rendu",
+              "manual": "Manuellement"
+            }
+          },
+          "automaticSuspend": {
+            "name": "Suspension automatique",
+            "desc": "Suspend automatiquement le SDK lorsque le jeu est suspendu"
+          },
+          "suspendTimeout": {
+            "name": "Délai de suspension",
+            "desc": "Nombre de secondes à attendre avant de suspendre le SDK"
+          }
+        },
+        "actions": {
+          "Interstitial": {
+            "list-name": "Interstitial",
+            "display-text": "Demander une publicité interstitielle [i]{0}[/i]",
+            "description": "Demander une publicité interstitielle",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "Le tag de la publicité"
+              }
+            }
+          },
+          "Rewarded": {
+            "list-name": "Récompensé",
+            "display-text": "Demander une publicité récompensée [i]{0}[/i]",
+            "description": "Demander une publicité récompensée",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "Le tag de la publicité"
+              }
+            }
+          },
+          "SendEvent": {
+            "list-name": "Envoyer un événement",
+            "display-text": "Envoyer un événement d'analytique [i]{0}[/i], [i]{1}[/i], [i]{2}[/i]",
+            "description": "Envoyer un événement d'analytique",
+            "params": {
+              "category": {
+                "name": "Catégorie",
+                "desc": "La catégorie de l'événement"
+              },
+              "action": {
+                "name": "Action",
+                "desc": "L'action de l'événement"
+              },
+              "label": {
+                "name": "Libellé",
+                "desc": "Le libellé de l'événement"
+              }
+            }
+          },
+          "GameplayStart": {
+            "list-name": "Début du gameplay",
+            "display-text": "Début du gameplay",
+            "description": "Notifier le SDK que le gameplay a commencé",
+            "params": {}
+          },
+          "GameplayStop": {
+            "list-name": "Fin du gameplay",
+            "display-text": "Fin du gameplay",
+            "description": "Notifier le SDK que le gameplay est terminé",
+            "params": {}
+          },
+          "LoadingEnd": {
+            "list-name": "Fin du chargement",
+            "display-text": "Fin du chargement",
+            "description": "Notifier manuellement le SDK que le jeu a fini de charger",
+            "params": {}
+          }
+        },
+        "conditions": {
+          "LastRewardedSuccess": {
+            "list-name": "Dernière récompense réussie",
+            "display-text": "Dernière récompense réussie",
+            "description": "Dernière récompense réussie",
+            "params": {}
+          },
+          "OnIntertsitialComplete": {
+            "list-name": "À la fin de la publicité interstitielle",
+            "display-text": "À la fin de la publicité interstitielle [i]{0}[/i]",
+            "description": "Déclenché lorsque la publicité interstitielle est terminée",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "Le tag de la publicité"
+              }
+            }
+          },
+          "OnRewardedComplete": {
+            "list-name": "À la fin de la publicité récompensée",
+            "display-text": "À la fin de la publicité récompensée [i]{0}[/i]",
+            "description": "Déclenché lorsque la publicité récompensée est terminée",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "Le tag de la publicité"
+              }
+            }
+          },
+          "IsEnabled": {
+            "list-name": "Le SDK est activé",
+            "display-text": "Le SDK est activé",
+            "description": "Vérifie si le SDK est activé",
+            "params": {}
+          },
+          "IsLoaded": {
+            "list-name": "Le SDK est chargé",
+            "display-text": "Le SDK est chargé",
+            "description": "Vérifie si le SDK est chargé",
+            "params": {}
+          }
+        },
+        "expressions": {
+          "LastRewardedSuccess": {
+            "translated-name": "LastRewardedSuccess",
+            "description": "Dernière récompense réussie",
+            "params": {}
+          }
+        }
+      }
+    }
+  }
+}
