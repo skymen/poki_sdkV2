@@ -1,0 +1,30 @@
+{
+  "devDependencies": {
+    "adm-zip": "^0.5.16",
+    "chalk": "^5.4.1",
+    "child_process": "^1.0.2",
+    "chokidar": "^4.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "vite": "^6.0.7",
+    "webpack-cli": "^6.0.1",
+    "yocto-spinner": "^0.1.2",
+    "open": "^10.1.0"
+  },
+  "type": "module",
+  "scripts": {
+    "webpackBuildStep": "npx webpack build --config ./webpack_buildstep.config.cjs --stats verbose",
+    "webpackExport": "npx webpack build --config ./webpack_export.config.cjs --stats verbose",
+    "validateAceConfigs": "cd build && node validateAceConfigs.js",
+    "generateAceFiles": "cd build && node generateAceFiles.js",
+    "generateLang": "cd build && node generateLangJSON.js",
+    "build": "cd build && node build.js",
+    "dev": "cd build && node dev.js",
+    "updateProjectData": "cd build && node updateProjectData.js",
+    "init": "npm install && node build/init.js",
+    "generateDocs": "cd build && node generateDocumentation.js",
+    "publish": "cd build && node publish.js"
+  },
+  "dependencies": {}
+}

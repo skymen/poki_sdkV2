@@ -1,0 +1,121 @@
+{
+  "languageTag": "en-US",
+  "fileDescription": "Strings for sample_addon.",
+  "text": {
+    "plugins": {
+      "sample_addon": {
+        "name": "Sample Addon",
+        "description": "Description",
+        "help-url": "https://www.construct.net",
+        "aceCategories": {
+          "Aces_Files_In_Category_Folder": "Aces_Files_In_Category_Folder",
+          "Ace_Folders_In_Category_Folder": "Ace_Folders_In_Category_Folder",
+          "Aces_In_Single_File": "Aces_In_Single_File"
+        },
+        "properties": {},
+        "actions": {
+          "Action": {
+            "list-name": "Sample Action",
+            "display-text": "Sample Action {0}",
+            "description": "This is a sample action",
+            "params": {
+              "param1": {
+                "name": "Param1",
+                "desc": "This is a sample param"
+              }
+            }
+          },
+          "AsyncAction": {
+            "list-name": "Sample Action Async",
+            "display-text": "Sample Action Async",
+            "description": "This is a sample action",
+            "params": {}
+          },
+          "ActionCombo": {
+            "list-name": "Sample Action Combo",
+            "display-text": "Sample Action Combo {0}",
+            "description": "This is a sample action",
+            "params": {
+              "param1": {
+                "name": "Param1",
+                "desc": "This is a sample param",
+                "items": {
+                  "test": "test",
+                  "test2": "test2"
+                }
+              }
+            }
+          },
+          "SampleAction": {
+            "list-name": "Sample Action",
+            "display-text": "Sample Action {0}",
+            "description": "This is a sample action",
+            "params": {
+              "param1": {
+                "name": "Param1",
+                "desc": "This is a sample param"
+              }
+            }
+          }
+        },
+        "conditions": {
+          "Condition": {
+            "list-name": "Sample Condition",
+            "display-text": "Sample Condition {0}",
+            "description": "This is a sample condition",
+            "params": {
+              "param1": {
+                "name": "Param1",
+                "desc": "This is a sample param"
+              }
+            }
+          },
+          "Trigger": {
+            "list-name": "Sample Trigger",
+            "display-text": "Sample Trigger",
+            "description": "This is a sample trigger",
+            "params": {}
+          },
+          "ConditionCombo": {
+            "list-name": "Sample Condition",
+            "display-text": "Sample Condition {0}",
+            "description": "This is a sample condition",
+            "params": {
+              "param1": {
+                "name": "Param1",
+                "desc": "This is a sample param",
+                "items": {
+                  "TRUE": "True",
+                  "FALSE": "False"
+                }
+              }
+            }
+          },
+          "SampleCondition": {
+            "list-name": "Sample Condition",
+            "display-text": "Sample Condition",
+            "description": "This is a sample condition",
+            "params": {}
+          }
+        },
+        "expressions": {
+          "Expression": {
+            "translated-name": "Expression",
+            "description": "Sample Expression",
+            "params": {}
+          },
+          "Expression2": {
+            "translated-name": "Expression2",
+            "description": "Sample Expression",
+            "params": {}
+          },
+          "SampleExpression": {
+            "translated-name": "SampleExpression",
+            "description": "This is a sample expression",
+            "params": {}
+          }
+        }
+      }
+    }
+  }
+}
