@@ -1,13 +1,14 @@
 export const config = {
   highlight: false,
   deprecated: false,
-  returnType: "number",
-  description: "Sample Expression",
+  listName: "SDK Is Enabled",
+  displayText: "SDK is enabled",
+  description: "Check if the SDK is enabled",
   params: [],
 };
 
 export const expose = false;
 
 export default function () {
-  return 1002;
+  return this.enabled;
 }

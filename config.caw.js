@@ -7,16 +7,17 @@ import {
 import _version from "./version.js";
 export const addonType = ADDON_TYPE.PLUGIN;
 export const type = PLUGIN_TYPE.OBJECT;
-export const id = "sample_addon";
-export const name = "Sample Addon";
+export const id = "Avix_PokiSDK_ForC3";
+export const name = "Poki SDK";
 export const version = _version;
-export const author = "skymen";
-export const website = "https://www.construct.net";
-export const documentation = "https://www.construct.net";
-export const description = "Description";
-export const category = ADDON_CATEGORY.GENERAL;
+export const author = "skymen, Avix Games";
+export const website = "https://github.com/skymen/poki_sdkV2";
+export const documentation = "https://sdk.poki.com/";
+export const description =
+  "Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)";
+export const category = ADDON_CATEGORY.PLATFORM_SPECIFIC;
 
-export const hasDomside = false;
+export const hasDomside = true;
 export const files = {
   extensionScript: {},
   fileDependencies: [],
@@ -66,7 +67,21 @@ export const info = {
 export const properties = [
   /*
   {
-    type: PROPERTY_TYPE.INTEGER,
+    type:
+      "integer"
+      "float"
+      "percent"
+      "text"
+      "longtext"
+      "check"
+      "font"
+      "combo"
+      "color"
+      "object"
+      "group"
+      "link"
+      "info"
+
     id: "property_id",
     options: {
       initialValue: 0,
@@ -87,17 +102,109 @@ export const properties = [
       // allowedPluginIds: ["Sprite", "<world>"],
 
       // for type link only
-      // linkCallback: function(instOrObj) {},
+      // linkCallback: `function(instOrObj) {}`,
       // linkText: "Link Text",
       // callbackType:
       //   "for-each-instance"
       //   "once-for-type"
 
       // for type info only
-      // infoCallback: function(inst) {},
+      // infoCallback: `function(inst) {}`,
     },
     name: "Property Name",
     desc: "Property Description",
   }
   */
+  {
+    type: "combo",
+    id: "enabled",
+    options: {
+      initialValue: "enabled_export",
+      items: [
+        { disabled: "Disabled" },
+        { enabled_export: "Enabled on export" },
+        { enabled: "Enabled" },
+      ],
+    },
+    name: "Enabled",
+    desc: "Whether the SDK is enabled",
+  },
+  {
+    type: "check",
+    id: "debug",
+    options: {
+      initialValue: true,
+    },
+    name: "Debug on preview",
+    desc: "Whether to enable debug mode",
+  },
+  {
+    type: "text",
+    id: "gameId",
+    options: {
+      initialValue: "",
+    },
+    name: "Config",
+    desc: "Config data to pass to the SDK",
+  },
+  {
+    type: "check",
+    id: "doBeacon",
+    options: {
+      initialValue: true,
+    },
+    name: "Do beacon",
+    desc: "Whether to send beacons to Poki",
+  },
+  {
+    type: "integer",
+    id: "beaconInterval",
+    options: {
+      initialValue: 60,
+    },
+    name: "Beacon interval",
+    desc: "Number of seconds between beacons",
+  },
+  {
+    type: "integer",
+    id: "maxBeacons",
+    options: {
+      initialValue: 6,
+    },
+    name: "Max beacons",
+    desc: "Maximum number of beacons to send",
+  },
+  {
+    type: "combo",
+    id: "loadingNotification",
+    options: {
+      initialValue: "immediate",
+      items: [
+        { immediate: "Immediate" },
+        { afterFirstLayout: "After first layout" },
+        { manual: "Manual" },
+      ],
+    },
+    name: "Loading notification",
+    desc: "When to notify the DOM that the game has finished loading",
+  },
+  {
+    type: "check",
+    id: "automaticSuspend",
+    options: {
+      initialValue: true,
+    },
+    name: "Automatic suspend",
+    desc: "Automatically suspend the SDK when the game is suspended",
+  },
+  {
+    type: "integer",
+    id: "suspendTimeout",
+    options: {
+      initialValue: 300,
+      minValue: 0,
+    },
+    name: "Suspend timeout",
+    desc: "Number of seconds to wait before suspending the SDK",
+  },
 ];

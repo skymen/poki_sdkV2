@@ -1,117 +1,173 @@
 {
   "languageTag": "en-US",
-  "fileDescription": "Strings for sample_addon.",
+  "fileDescription": "Strings for avix_pokisdk_forc3.",
   "text": {
     "plugins": {
-      "sample_addon": {
-        "name": "Sample Addon",
-        "description": "Description",
-        "help-url": "https://www.construct.net",
+      "avix_pokisdk_forc3": {
+        "name": "Poki SDK",
+        "description": "Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)",
+        "help-url": "https://sdk.poki.com/",
         "aceCategories": {
-          "Aces_Files_In_Category_Folder": "Aces_Files_In_Category_Folder",
-          "Ace_Folders_In_Category_Folder": "Ace_Folders_In_Category_Folder",
-          "Aces_In_Single_File": "Aces_In_Single_File"
+          "ads": "ads",
+          "analytics": "analytics",
+          "gameplay": "gameplay",
+          "misc": "misc"
         },
-        "properties": {},
+        "properties": {
+          "enabled": {
+            "name": "Enabled",
+            "desc": "Whether the SDK is enabled",
+            "items": {
+              "disabled": "Disabled",
+              "enabled_export": "Enabled on export",
+              "enabled": "Enabled"
+            }
+          },
+          "debug": {
+            "name": "Debug on preview",
+            "desc": "Whether to enable debug mode"
+          },
+          "gameId": {
+            "name": "Config",
+            "desc": "Config data to pass to the SDK"
+          },
+          "doBeacon": {
+            "name": "Do beacon",
+            "desc": "Whether to send beacons to Poki"
+          },
+          "beaconInterval": {
+            "name": "Beacon interval",
+            "desc": "Number of seconds between beacons"
+          },
+          "maxBeacons": {
+            "name": "Max beacons",
+            "desc": "Maximum number of beacons to send"
+          },
+          "loadingNotification": {
+            "name": "Loading notification",
+            "desc": "When to notify the DOM that the game has finished loading",
+            "items": {
+              "immediate": "Immediate",
+              "afterFirstLayout": "After first layout",
+              "manual": "Manual"
+            }
+          },
+          "automaticSuspend": {
+            "name": "Automatic suspend",
+            "desc": "Automatically suspend the SDK when the game is suspended"
+          },
+          "suspendTimeout": {
+            "name": "Suspend timeout",
+            "desc": "Number of seconds to wait before suspending the SDK"
+          }
+        },
         "actions": {
-          "Action": {
-            "list-name": "Sample Action",
-            "display-text": "Sample Action {0}",
-            "description": "This is a sample action",
+          "Interstitial": {
+            "list-name": "Interstitial",
+            "display-text": "Request interstitial ad [i]{0}[/i]",
+            "description": "Request an interstitial ad",
             "params": {
-              "param1": {
-                "name": "Param1",
-                "desc": "This is a sample param"
+              "tag": {
+                "name": "Tag",
+                "desc": "The tag of the ad"
               }
             }
           },
-          "AsyncAction": {
-            "list-name": "Sample Action Async",
-            "display-text": "Sample Action Async",
-            "description": "This is a sample action",
+          "Rewarded": {
+            "list-name": "Rewarded",
+            "display-text": "Request rewarded ad [i]{0}[/i]",
+            "description": "Request a rewarded ad",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "The tag of the ad"
+              }
+            }
+          },
+          "SendEvent": {
+            "list-name": "Send Event",
+            "display-text": "Send Analytics Event [i]{0}[/i], [i]{1}[/i], [i]{2}[/i]",
+            "description": "Send an analytics event",
+            "params": {
+              "category": {
+                "name": "Category",
+                "desc": "The category of the event"
+              },
+              "action": {
+                "name": "Action",
+                "desc": "The action of the event"
+              },
+              "label": {
+                "name": "Label",
+                "desc": "The label of the event"
+              }
+            }
+          },
+          "GameplayStart": {
+            "list-name": "Gameplay Start",
+            "display-text": "Gameplay Start",
+            "description": "Notify the SDK that the gameplay has started",
             "params": {}
           },
-          "ActionCombo": {
-            "list-name": "Sample Action Combo",
-            "display-text": "Sample Action Combo {0}",
-            "description": "This is a sample action",
-            "params": {
-              "param1": {
-                "name": "Param1",
-                "desc": "This is a sample param",
-                "items": {
-                  "test": "test",
-                  "test2": "test2"
-                }
-              }
-            }
+          "GameplayStop": {
+            "list-name": "Gameplay Stop",
+            "display-text": "Gameplay Stop",
+            "description": "Notify the SDK that the gameplay has stopped",
+            "params": {}
           },
-          "SampleAction": {
-            "list-name": "Sample Action",
-            "display-text": "Sample Action {0}",
-            "description": "This is a sample action",
-            "params": {
-              "param1": {
-                "name": "Param1",
-                "desc": "This is a sample param"
-              }
-            }
+          "LoadingEnd": {
+            "list-name": "Loading End",
+            "display-text": "Loading End",
+            "description": "Manually notify the SDK that the game has finished loading",
+            "params": {}
           }
         },
         "conditions": {
-          "Condition": {
-            "list-name": "Sample Condition",
-            "display-text": "Sample Condition {0}",
-            "description": "This is a sample condition",
-            "params": {
-              "param1": {
-                "name": "Param1",
-                "desc": "This is a sample param"
-              }
-            }
-          },
-          "Trigger": {
-            "list-name": "Sample Trigger",
-            "display-text": "Sample Trigger",
-            "description": "This is a sample trigger",
+          "LastRewardedSuccess": {
+            "list-name": "Last Rewarded Success",
+            "display-text": "Last Rewarded Success",
+            "description": "Last Rewarded Success",
             "params": {}
           },
-          "ConditionCombo": {
-            "list-name": "Sample Condition",
-            "display-text": "Sample Condition {0}",
-            "description": "This is a sample condition",
+          "OnIntertsitialComplete": {
+            "list-name": "On Interstitial Complete",
+            "display-text": "On Interstitial [i]{0}[/i] Complete",
+            "description": "Triggered when an interstitial ad is completed",
             "params": {
-              "param1": {
-                "name": "Param1",
-                "desc": "This is a sample param",
-                "items": {
-                  "TRUE": "True",
-                  "FALSE": "False"
-                }
+              "tag": {
+                "name": "Tag",
+                "desc": "The tag of the ad"
               }
             }
           },
-          "SampleCondition": {
-            "list-name": "Sample Condition",
-            "display-text": "Sample Condition",
-            "description": "This is a sample condition",
+          "OnRewardedComplete": {
+            "list-name": "On Rewarded Complete",
+            "display-text": "On Rewarded [i]{0}[/i] Complete",
+            "description": "Triggered when a rewarded ad is completed",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "The tag of the ad"
+              }
+            }
+          },
+          "IsEnabled": {
+            "list-name": "SDK Is Enabled",
+            "display-text": "SDK is enabled",
+            "description": "Check if the SDK is enabled",
+            "params": {}
+          },
+          "IsLoaded": {
+            "list-name": "SDK Is Loaded",
+            "display-text": "SDK is loaded",
+            "description": "Check if the SDK is loaded",
             "params": {}
           }
         },
         "expressions": {
-          "Expression": {
-            "translated-name": "Expression",
-            "description": "Sample Expression",
-            "params": {}
-          },
-          "Expression2": {
-            "translated-name": "Expression2",
-            "description": "Sample Expression",
-            "params": {}
-          },
-          "SampleExpression": {
-            "translated-name": "SampleExpression",
-            "description": "This is a sample expression",
+          "LastRewardedSuccess": {
+            "translated-name": "LastRewardedSuccess",
+            "description": "Last Rewarded Success",
             "params": {}
           }
         }
