@@ -7,7 +7,7 @@ import {
 import _version from "./version.js";
 export const addonType = ADDON_TYPE.PLUGIN;
 export const type = PLUGIN_TYPE.OBJECT;
-export const id = "Avix_PokiSDK_ForC3";
+export const id = "skymen_pokiSDK";
 export const name = "Poki SDK";
 export const version = _version;
 export const author = "skymen, Avix Games";

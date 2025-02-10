@@ -1,9 +1,9 @@
 {
   "languageTag": "en-US",
-  "fileDescription": "Strings for avix_pokisdk_forc3.",
+  "fileDescription": "Strings for skymen_pokisdk.",
   "text": {
     "plugins": {
-      "avix_pokisdk_forc3": {
+      "skymen_pokisdk": {
         "name": "Poki SDK",
         "description": "Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)",
         "help-url": "https://sdk.poki.com/",
