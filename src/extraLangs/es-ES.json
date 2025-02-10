@@ -1,9 +1,9 @@
 {
   "languageTag": "es-ES",
-  "fileDescription": "Cadenas para avix_pokisdk_forc3.",
+  "fileDescription": "Cadenas para skymen_pokisdk.",
   "text": {
     "plugins": {
-      "avix_pokisdk_forc3": {
+      "skymen_pokisdk": {
         "name": "Poki SDK",
         "description": "Plugin sencillo para juegos que se alojan en la plataforma Poki (https://sdk.poki.com/)",
         "help-url": "https://sdk.poki.com/",
