@@ -9,6 +9,7 @@
 
 ---
 <b><u>Author:</u></b> skymen, Avix Games <br>
+<b>[Construct Addon Page](https://www.construct.net/en/make-games/addons/1409/poki)</b>  <br>
 <b>[Documentation](https://sdk.poki.com/)</b>  <br>
 <sub>Made using [CAW](https://marketplace.visualstudio.com/items?itemName=skymen.caw) </sub><br>
 
