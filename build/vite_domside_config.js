@@ -12,5 +12,11 @@ export default defineConfig({
         entryFileNames: "[name].js",
       },
     },
+    minify: "terser",
+    terserOptions: {
+      mangle: {
+        properties: false, // Prevents renaming of object properties
+      },
+    },
   },
 });

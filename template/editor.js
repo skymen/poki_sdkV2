@@ -12,24 +12,24 @@ const AddonTypeMap = {
 const SDKType = SDK[AddonTypeMap[ADDON_INFO.addonType]];
 
 const baseClass = {
-  plugin: SDK.IPluginBase,
-  behavior: SDK.IBehaviorBase,
+  "plugin": SDK.IPluginBase,
+  "behavior": SDK.IBehaviorBase,
 };
 
 const typeClass = {
-  plugin: SDK.ITypeBase,
-  behavior: SDK.IBehaviorTypeBase,
+  "plugin": SDK.ITypeBase,
+  "behavior": SDK.IBehaviorTypeBase,
 };
 
 const pluginInstanceParentClass = {
-  object: SDK.IInstanceBase,
-  world: SDK.IWorldInstanceBase,
-  dom: SDK.IWorldInstanceBase,
+  "object": SDK.IInstanceBase,
+  "world": SDK.IWorldInstanceBase,
+  "dom": SDK.IWorldInstanceBase,
 };
 
 const instanceClass = {
-  plugin: pluginInstanceParentClass[ADDON_INFO.type],
-  behavior: SDK.IBehaviorInstanceBase,
+  "plugin": pluginInstanceParentClass[ADDON_INFO.type],
+  "behavior": SDK.IBehaviorInstanceBase,
 };
 
 SDKType[ADDON_INFO.id] = createPluginClass(

@@ -1,6 +1,6 @@
-const AddonTypeMap = {
-  plugin: "Plugins",
-  behavior: "Behaviors",
-};
+const AddonTypeMap = new Map([
+  ["plugin", "Plugins"],
+  ["behavior", "Behaviors"],
+]);
 
 export default AddonTypeMap;
