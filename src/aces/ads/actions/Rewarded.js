@@ -24,7 +24,7 @@ export default async function (tag) {
   const result = await this._postToDOMAsync("Rewarded");
   this.lastRewardedSuccess = result;
   this._resumeRuntime();
-  this._lastTriggeredTag = tag;
+  this.lastAdTag = tag;
   this._trigger("OnRewardedComplete");
   return result;
 }

@@ -23,6 +23,6 @@ export default async function (tag) {
   this._suspendRuntime();
   await this._postToDOMAsync("Interstitial");
   this._resumeRuntime();
-  this._lastTriggeredTag = tag;
+  this.lastAdTag = tag;
   this._trigger("OnIntertsitialComplete");
 }

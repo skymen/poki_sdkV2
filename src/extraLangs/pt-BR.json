@@ -29,18 +29,18 @@
           },
           "gameId": {
             "name": "ID do jogo",
-            "desc": "Digite o ID do jogo aqui para que o beacon funcione"
+            "desc": "Insira o ID do jogo aqui para que o beacon funcione"
           },
           "doBeacon": {
-            "name": "Fazer beacon",
-            "desc": "Se deve enviar beacons para o Poki"
+            "name": "Enviar beacon",
+            "desc": "Se deve enviar beacons para a Poki"
           },
           "beaconInterval": {
             "name": "Intervalo do beacon",
             "desc": "Número de segundos entre beacons"
           },
           "maxBeacons": {
-            "name": "Beacons máximos",
+            "name": "Máximo de beacons",
             "desc": "Número máximo de beacons a serem enviados"
           },
           "loadingNotification": {
@@ -130,8 +130,8 @@
             "params": {}
           },
           "OnIntertsitialComplete": {
-            "list-name": "Ao Concluir Intersticial",
-            "display-text": "Ao Concluir Intersticial [i]{0}[/i]",
+            "list-name": "Ao Concluir Anúncio Intersticial",
+            "display-text": "Ao Concluir Anúncio Intersticial [i]{0}[/i]",
             "description": "Acionado quando um anúncio intersticial é concluído",
             "params": {
               "tag": {
@@ -141,8 +141,8 @@
             }
           },
           "OnRewardedComplete": {
-            "list-name": "Ao Concluir Recompensado",
-            "display-text": "Ao Concluir Recompensado [i]{0}[/i]",
+            "list-name": "Ao Concluir Anúncio Recompensado",
+            "display-text": "Ao Concluir Anúncio Recompensado [i]{0}[/i]",
             "description": "Acionado quando um anúncio recompensado é concluído",
             "params": {
               "tag": {
@@ -165,6 +165,11 @@
           }
         },
         "expressions": {
+          "LastAdTag": {
+            "translated-name": "ÚltimaTagDoAnúncio",
+            "description": "Última Tag do Anúncio",
+            "params": {}
+          },
           "LastRewardedSuccess": {
             "translated-name": "ÚltimoSucessoRecompensado",
             "description": "Último Sucesso Recompensado",

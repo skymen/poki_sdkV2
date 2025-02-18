@@ -1,9 +1,9 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.0.2.1
+### Version 2.0.2.2
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.0.2.1.c3addon/skymen_pokiSDK-2.0.2.1.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.0.2.2.c3addon/skymen_pokiSDK-2.0.2.2.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
@@ -80,4 +80,5 @@ npm run dev
 ## Expressions
 | Expression | Description | Return Type | Params
 | --- | --- | --- | --- |
+| LastAdTag | Last Ad Tag | string |  | 
 | LastRewardedSuccess | Last Rewarded Success | number |  | 

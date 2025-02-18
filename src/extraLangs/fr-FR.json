@@ -48,7 +48,7 @@
             "desc": "Quand notifier le DOM que le jeu a fini de charger",
             "items": {
               "immediate": "Immédiatement",
-              "afterFirstLayout": "Après le premier affichage",
+              "afterFirstLayout": "Après le premier rendu",
               "manual": "Manuellement"
             }
           },
@@ -124,14 +124,14 @@
         },
         "conditions": {
           "LastRewardedSuccess": {
-            "list-name": "Dernière récompense réussie",
-            "display-text": "Dernière récompense réussie",
-            "description": "Dernière récompense réussie",
+            "list-name": "Dernier succès récompensé",
+            "display-text": "Dernier succès récompensé",
+            "description": "Dernier succès récompensé",
             "params": {}
           },
           "OnIntertsitialComplete": {
-            "list-name": "À la fin de la publicité interstitielle",
-            "display-text": "À la fin de la publicité interstitielle [i]{0}[/i]",
+            "list-name": "À la fin de l'interstitiel",
+            "display-text": "À la fin de l'interstitiel [i]{0}[/i]",
             "description": "Déclenché lorsque la publicité interstitielle est terminée",
             "params": {
               "tag": {
@@ -141,8 +141,8 @@
             }
           },
           "OnRewardedComplete": {
-            "list-name": "À la fin de la publicité récompensée",
-            "display-text": "À la fin de la publicité récompensée [i]{0}[/i]",
+            "list-name": "À la fin de la récompense",
+            "display-text": "À la fin de la récompense [i]{0}[/i]",
             "description": "Déclenché lorsque la publicité récompensée est terminée",
             "params": {
               "tag": {
@@ -165,9 +165,14 @@
           }
         },
         "expressions": {
+          "LastAdTag": {
+            "translated-name": "DernierTagPub",
+            "description": "Dernier Tag de Publicité",
+            "params": {}
+          },
           "LastRewardedSuccess": {
-            "translated-name": "Dernière récompense réussie",
-            "description": "Dernière récompense réussie",
+            "translated-name": "DernierSuccesRecompense",
+            "description": "Dernier Succès Récompensé",
             "params": {}
           }
         }

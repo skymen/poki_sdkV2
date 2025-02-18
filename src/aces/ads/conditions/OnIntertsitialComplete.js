@@ -20,5 +20,5 @@ export const config = {
 export const expose = false;
 
 export default function (tag) {
-  return tag === "" || this._lastTriggeredTag === tag;
+  return tag === "" || this.lastAdTag === tag;
 }

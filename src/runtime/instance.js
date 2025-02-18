@@ -8,7 +8,7 @@ export default function (parentClass) {
       this.enabled = false;
       this.lastRewardedSuccess = false;
       this._debugModeActive = false;
-      this._lastTriggeredTag = "";
+      this.lastAdTag = "";
       this.hasAds = false;
       this.hasInterstitialAds = false;
       this.hasRewardedAds = false;

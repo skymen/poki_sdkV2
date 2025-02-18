@@ -28,8 +28,8 @@
             "desc": "Indica si se habilita el modo de depuración"
           },
           "gameId": {
-            "name": "Configuración",
-            "desc": "Datos de configuración para pasar al SDK"
+            "name": "ID del juego",
+            "desc": "Ingresa aquí el ID del juego para que funcione el beacon"
           },
           "doBeacon": {
             "name": "Realizar beacon",
@@ -58,7 +58,7 @@
           },
           "suspendTimeout": {
             "name": "Tiempo de espera de suspensión",
-            "desc": "Número de segundos a esperar antes de suspender el SDK"
+            "desc": "Número de segundos para esperar antes de suspender el SDK"
           }
         },
         "actions": {
@@ -165,6 +165,11 @@
           }
         },
         "expressions": {
+          "LastAdTag": {
+            "translated-name": "Última etiqueta de anuncio",
+            "description": "Última etiqueta de anuncio",
+            "params": {}
+          },
           "LastRewardedSuccess": {
             "translated-name": "Último éxito recompensado",
             "description": "Último éxito recompensado",
