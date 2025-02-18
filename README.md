@@ -1,9 +1,9 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.0.2.0
+### Version 2.0.2.1
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.0.2.0.c3addon/skymen_pokiSDK-2.0.2.0.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.0.2.1.c3addon/skymen_pokiSDK-2.0.2.1.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
@@ -44,7 +44,7 @@ npm run dev
 | --- | --- | --- |
 | Enabled | Whether the SDK is enabled | combo |
 | Debug on preview | Whether to enable debug mode | check |
-| Config | Config data to pass to the SDK | text |
+| Game ID | Enter the ID of the game here for the beacon to work | text |
 | Do beacon | Whether to send beacons to Poki | check |
 | Beacon interval | Number of seconds between beacons | integer |
 | Max beacons | Maximum number of beacons to send | integer |

@@ -28,11 +28,11 @@
             "desc": "Se deve habilitar o modo de depuração"
           },
           "gameId": {
-            "name": "Configuração",
-            "desc": "Dados de configuração para passar para o SDK"
+            "name": "ID do jogo",
+            "desc": "Digite o ID do jogo aqui para que o beacon funcione"
           },
           "doBeacon": {
-            "name": "Enviar beacon",
+            "name": "Fazer beacon",
             "desc": "Se deve enviar beacons para o Poki"
           },
           "beaconInterval": {
@@ -130,8 +130,8 @@
             "params": {}
           },
           "OnIntertsitialComplete": {
-            "list-name": "Ao Concluir Anúncio Intersticial",
-            "display-text": "Ao Concluir Anúncio Intersticial [i]{0}[/i]",
+            "list-name": "Ao Concluir Intersticial",
+            "display-text": "Ao Concluir Intersticial [i]{0}[/i]",
             "description": "Acionado quando um anúncio intersticial é concluído",
             "params": {
               "tag": {
@@ -141,8 +141,8 @@
             }
           },
           "OnRewardedComplete": {
-            "list-name": "Ao Concluir Anúncio Recompensado",
-            "display-text": "Ao Concluir Anúncio Recompensado [i]{0}[/i]",
+            "list-name": "Ao Concluir Recompensado",
+            "display-text": "Ao Concluir Recompensado [i]{0}[/i]",
             "description": "Acionado quando um anúncio recompensado é concluído",
             "params": {
               "tag": {

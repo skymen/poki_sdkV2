@@ -54,7 +54,7 @@
           },
           "automaticSuspend": {
             "name": "Suspensión automática",
-            "desc": "Suspender automáticamente el SDK cuando el juego se suspende"
+            "desc": "Suspender automáticamente el SDK cuando el juego está suspendido"
           },
           "suspendTimeout": {
             "name": "Tiempo de espera de suspensión",

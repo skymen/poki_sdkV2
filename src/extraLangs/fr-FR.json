@@ -19,36 +19,36 @@
             "desc": "Indique si le SDK est activé",
             "items": {
               "disabled": "Désactivé",
-              "enabled_export": "Activé lors de l'exportation",
+              "enabled_export": "Activé à l'export",
               "enabled": "Activé"
             }
           },
           "debug": {
-            "name": "Mode de débogage lors de la prévisualisation",
+            "name": "Mode de débogage en prévisualisation",
             "desc": "Indique si le mode de débogage est activé"
           },
           "gameId": {
-            "name": "Configuration",
-            "desc": "Données de configuration à transmettre au SDK"
+            "name": "ID du jeu",
+            "desc": "Entrez ici l'ID du jeu pour que le beacon fonctionne"
           },
           "doBeacon": {
-            "name": "Envoyer des balises",
-            "desc": "Indique si les balises doivent être envoyées à Poki"
+            "name": "Effectuer le beacon",
+            "desc": "Indique si les beacons doivent être envoyés à Poki"
           },
           "beaconInterval": {
-            "name": "Intervalle de balise",
-            "desc": "Nombre de secondes entre les balises"
+            "name": "Intervalle du beacon",
+            "desc": "Nombre de secondes entre les beacons"
           },
           "maxBeacons": {
-            "name": "Nombre maximal de balises",
-            "desc": "Nombre maximal de balises à envoyer"
+            "name": "Nombre maximal de beacons",
+            "desc": "Nombre maximal de beacons à envoyer"
           },
           "loadingNotification": {
             "name": "Notification de chargement",
             "desc": "Quand notifier le DOM que le jeu a fini de charger",
             "items": {
               "immediate": "Immédiatement",
-              "afterFirstLayout": "Après le premier rendu",
+              "afterFirstLayout": "Après le premier affichage",
               "manual": "Manuellement"
             }
           },
@@ -166,7 +166,7 @@
         },
         "expressions": {
           "LastRewardedSuccess": {
-            "translated-name": "LastRewardedSuccess",
+            "translated-name": "Dernière récompense réussie",
             "description": "Dernière récompense réussie",
             "params": {}
           }

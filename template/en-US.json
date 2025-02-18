@@ -28,8 +28,8 @@
             "desc": "Whether to enable debug mode"
           },
           "gameId": {
-            "name": "Config",
-            "desc": "Config data to pass to the SDK"
+            "name": "Game ID",
+            "desc": "Enter the ID of the game here for the beacon to work"
           },
           "doBeacon": {
             "name": "Do beacon",

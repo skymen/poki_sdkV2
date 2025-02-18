@@ -144,8 +144,8 @@ export const properties = [
     options: {
       initialValue: "",
     },
-    name: "Config",
-    desc: "Config data to pass to the SDK",
+    name: "Game ID",
+    desc: "Enter the ID of the game here for the beacon to work",
   },
   {
     type: "check",
