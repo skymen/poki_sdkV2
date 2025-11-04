@@ -1,9 +1,9 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.0.2.2
+### Version 2.1.0.0
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.0.2.2.c3addon/skymen_pokiSDK-2.0.2.2.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.1.0.0.c3addon/skymen_pokiSDK-2.1.0.0.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
@@ -51,6 +51,7 @@ npm run dev
 | Loading notification | When to notify the DOM that the game has finished loading | combo |
 | Automatic suspend | Automatically suspend the SDK when the game is suspended | check |
 | Suspend timeout | Number of seconds to wait before suspending the SDK | integer |
+| Auto delay gameplay start | Automatically delay the gameplay start to wait for the user to interact with the game | check |
 
 
 ---
@@ -59,7 +60,7 @@ npm run dev
 | --- | --- | --- |
 | Interstitial | Request an interstitial ad | Tag             *(string)* <br> |
 | Rewarded | Request a rewarded ad | Tag             *(string)* <br> |
-| Send Event | Send an analytics event | Category             *(string)* <br>Action             *(string)* <br>Label             *(string)* <br> |
+| Send Event | Send an analytics event | Category             *(string)* <br>What             *(string)* <br>Action             *(string)* <br> |
 | Gameplay Start | Notify the SDK that the gameplay has started |  |
 | Gameplay Stop | Notify the SDK that the gameplay has stopped |  |
 | Loading End | Manually notify the SDK that the game has finished loading |  |
