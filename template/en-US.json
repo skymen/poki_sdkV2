@@ -59,6 +59,10 @@
           "suspendTimeout": {
             "name": "Suspend timeout",
             "desc": "Number of seconds to wait before suspending the SDK"
+          },
+          "autoDelayGameplayStart": {
+            "name": "Auto delay gameplay start",
+            "desc": "Automatically delay the gameplay start to wait for the user to interact with the game"
           }
         },
         "actions": {
@@ -94,12 +98,12 @@
                 "desc": "The category of the event"
               },
               "action": {
-                "name": "Action",
-                "desc": "The action of the event"
+                "name": "What",
+                "desc": "What the event is about"
               },
               "label": {
-                "name": "Label",
-                "desc": "The label of the event"
+                "name": "Action",
+                "desc": "The action that was taken"
               }
             }
           },
