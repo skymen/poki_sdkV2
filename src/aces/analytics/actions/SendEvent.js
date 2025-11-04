@@ -15,15 +15,15 @@ export const config = {
     },
     {
       id: "action",
-      name: "Action",
-      desc: "The action of the event",
+      name: "What",
+      desc: "What the event is about",
       type: "string",
       initialValue: "",
     },
     {
       id: "label",
-      name: "Label",
-      desc: "The label of the event",
+      name: "Action",
+      desc: "The action that was taken",
       type: "string",
       initialValue: "",
     },
@@ -32,6 +32,6 @@ export const config = {
 
 export const expose = true;
 
-export default function (category, action, label) {
-  this._postToDOMAsync("AnalyticsEvent", { category, action, label });
+export default function (category, what, action) {
+  this._postToDOMAsync("AnalyticsEvent", { category, what, action });
 }

@@ -6,7 +6,11 @@ preventWeirdInputs();
 let sdk;
 let currentSdk = null;
 let enabled = false;
-const sdkContext = {};
+const sdkContext = {
+  hasUserInteracted: false,
+  pendingGameplayStart: false,
+  gameplayStarted: false,
+};
 
 let supportedNetworks = [
   {
@@ -68,11 +72,23 @@ let supportedNetworks = [
         listen("gameplayStart", () => {
           beacon("gameplayStart");
           if (sdkContext.gameplayStarted) return;
+
+          // If user hasn't interacted yet, delay gameplay start
+          if (
+            !sdkContext.hasUserInteracted &&
+            data.poki_autoDelayGameplayStart
+          ) {
+            sdkContext.pendingGameplayStart = true;
+            console.log("Delaying gameplay start until user interaction...");
+            return;
+          }
+
           sdkContext.gameplayStarted = true;
           sdk.gameplayStart();
         });
         listen("gameplayStop", () => {
           beacon("gameplayStop");
+          sdkContext.pendingGameplayStart = false;
           if (!sdkContext.gameplayStarted) return;
           sdkContext.gameplayStarted = false;
           sdk.gameplayStop();
@@ -84,11 +100,12 @@ let supportedNetworks = [
             dispatch("interstitialEnd", true);
           });
         });
-        listen("rewarded", () => {
+        listen("rewarded", (size) => {
           beacon("rewarded");
           let lastRequestedAd = sdkContext.lastRequestedAd;
           sdk
             .rewardedBreak({
+              size: size || "medium",
               onStart: () => {
                 dispatch("adStarted", lastRequestedAd);
               },
@@ -97,14 +114,39 @@ let supportedNetworks = [
               dispatch("rewardedEnd", success);
             });
         });
-        listen("analyticsEvent", (category, action, label) => {
+        listen("analyticsEvent", (category, what, action) => {
           beacon(`${category}_${action}`);
-          sdk.measure(category, action, label);
+          sdk.measure(category, what, action);
         });
       },
     },
   },
 ];
+
+// Setup user interaction listener
+function setupUserInteractionListener() {
+  const handleInteraction = () => {
+    if (!sdkContext.hasUserInteracted) {
+      sdkContext.hasUserInteracted = true;
+      console.log("User interaction detected for SDK");
+
+      // If there's a pending gameplay start, trigger it now
+      if (sdkContext.pendingGameplayStart && !sdkContext.gameplayStarted) {
+        sdkContext.pendingGameplayStart = false;
+        sdkContext.gameplayStarted = true;
+        if (sdk && sdk.gameplayStart) {
+          sdk.gameplayStart();
+          console.log("Triggered delayed gameplay start");
+        }
+      }
+    }
+  };
+
+  // Listen for user interactions
+  document.addEventListener("click", handleInteraction, { once: true });
+  document.addEventListener("keydown", handleInteraction, { once: true });
+  document.addEventListener("touchstart", handleInteraction, { once: true });
+}
 
 const Wrapper = {
   get enabled() {
@@ -132,6 +174,10 @@ const Wrapper = {
               currentSdk.implementation.setUpEventListeners(debug, data);
               if (currentSdk.implementation.init)
                 await currentSdk.implementation.init(debug, data);
+
+              // Setup user interaction listener for delayed gameplay start
+              setupUserInteractionListener();
+
               Wrapper.loadingStart();
               resolve();
             };
@@ -201,7 +247,7 @@ const Wrapper = {
       });
     });
   },
-  rewarded() {
+  rewarded(size) {
     sdkContext.lastRequestedAd = "rewarded";
     if (!currentSdk || !currentSdk.hasAds || currentSdk.noRewarded) {
       dispatch("adStarted", sdkContext.lastRequestedAd);
@@ -210,7 +256,7 @@ const Wrapper = {
     return new Promise((resolve) => {
       let gameplayStarted = sdkContext.gameplayStarted;
       if (gameplayStarted) Wrapper.gameplayStop();
-      dispatch("rewarded");
+      dispatch("rewarded", size);
       listenOnce("rewardedEnd", (...args) => {
         if (gameplayStarted) Wrapper.gameplayStart();
         resolve(...args);
@@ -231,8 +277,8 @@ const Wrapper = {
   hasRewardedAds() {
     return currentSdk && currentSdk.hasAds && !currentSdk.noRewarded ? 1 : 0;
   },
-  analyticsEvent({ category, action, label }) {
-    dispatch("analyticsEvent", category, action, label);
+  analyticsEvent({ category, what, action }) {
+    dispatch("analyticsEvent", category, what, action);
   },
 };
 

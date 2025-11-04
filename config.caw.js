@@ -207,4 +207,13 @@ export const properties = [
     name: "Suspend timeout",
     desc: "Number of seconds to wait before suspending the SDK",
   },
+  {
+    type: "check",
+    id: "autoDelayGameplayStart",
+    options: {
+      initialValue: true,
+    },
+    name: "Auto delay gameplay start",
+    desc: "Automatically delay the gameplay start to wait for the user to interact with the game",
+  },
 ];

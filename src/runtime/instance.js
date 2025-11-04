@@ -24,7 +24,7 @@ export default function (parentClass) {
       this._doBeacon = false;
       this._beaconInterval = 60;
       this._maxBeacons = 6;
-
+      this._autoDelayGameplayStart = true;
       const properties = this._getInitProperties();
       if (properties) {
         // note properties may be null in some cases
@@ -38,6 +38,7 @@ export default function (parentClass) {
           this._loadingNotification,
           this._automaticSuspend,
           this._suspendTimeout,
+          this._autoDelayGameplayStart,
         ] = properties;
       }
 
@@ -46,6 +47,7 @@ export default function (parentClass) {
         poki_doBeacon: this._doBeacon,
         poki_beaconInterval: this._beaconInterval,
         poki_maxBeacons: this._maxBeacons,
+        poki_autoDelayGameplayStart: this._autoDelayGameplayStart,
       };
 
       this.enabled =
