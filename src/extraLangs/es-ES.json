@@ -5,7 +5,7 @@
     "plugins": {
       "skymen_pokisdk": {
         "name": "Poki SDK",
-        "description": "Plugin sencillo para juegos que se alojan en la plataforma Poki (https://sdk.poki.com/)",
+        "description": "Plugin sencillo para juegos alojados en la plataforma Poki (https://sdk.poki.com/)",
         "help-url": "https://sdk.poki.com/",
         "aceCategories": {
           "ads": "anuncios",
@@ -19,20 +19,20 @@
             "desc": "Indica si el SDK está activado",
             "items": {
               "disabled": "Desactivado",
-              "enabled_export": "Activado en la exportación",
+              "enabled_export": "Activado al exportar",
               "enabled": "Activado"
             }
           },
           "debug": {
-            "name": "Depuración en vista previa",
-            "desc": "Indica si se habilita el modo de depuración"
+            "name": "Depurar en vista previa",
+            "desc": "Indica si se activa el modo depuración"
           },
           "gameId": {
             "name": "ID del juego",
-            "desc": "Ingresa aquí el ID del juego para que funcione el beacon"
+            "desc": "Introduce el ID del juego aquí para que funcione el beacon"
           },
           "doBeacon": {
-            "name": "Realizar beacon",
+            "name": "Enviar beacon",
             "desc": "Indica si se envían beacons a Poki"
           },
           "beaconInterval": {
@@ -54,18 +54,22 @@
           },
           "automaticSuspend": {
             "name": "Suspensión automática",
-            "desc": "Suspender automáticamente el SDK cuando el juego está suspendido"
+            "desc": "Suspende automáticamente el SDK cuando el juego se suspende"
           },
           "suspendTimeout": {
-            "name": "Tiempo de espera de suspensión",
-            "desc": "Número de segundos para esperar antes de suspender el SDK"
+            "name": "Tiempo de espera para suspender",
+            "desc": "Número de segundos antes de suspender el SDK"
+          },
+          "autoDelayGameplayStart": {
+            "name": "Retraso automático del inicio de juego",
+            "desc": "Retrasa automáticamente el inicio del juego para esperar la interacción del usuario"
           }
         },
         "actions": {
           "Interstitial": {
-            "list-name": "Interstitial",
+            "list-name": "Intersticial",
             "display-text": "Solicitar anuncio intersticial [i]{0}[/i]",
-            "description": "Solicitar un anuncio intersticial",
+            "description": "Solicita un anuncio intersticial",
             "params": {
               "tag": {
                 "name": "Etiqueta",
@@ -74,9 +78,9 @@
             }
           },
           "Rewarded": {
-            "list-name": "Rewarded",
+            "list-name": "Recompensado",
             "display-text": "Solicitar anuncio recompensado [i]{0}[/i]",
-            "description": "Solicitar un anuncio recompensado",
+            "description": "Solicita un anuncio recompensado",
             "params": {
               "tag": {
                 "name": "Etiqueta",
@@ -87,51 +91,51 @@
           "SendEvent": {
             "list-name": "Enviar evento",
             "display-text": "Enviar evento de analítica [i]{0}[/i], [i]{1}[/i], [i]{2}[/i]",
-            "description": "Enviar un evento de analítica",
+            "description": "Envía un evento de analítica",
             "params": {
               "category": {
                 "name": "Categoría",
                 "desc": "La categoría del evento"
               },
               "action": {
-                "name": "Acción",
-                "desc": "La acción del evento"
+                "name": "Qué",
+                "desc": "Sobre qué trata el evento"
               },
               "label": {
-                "name": "Etiqueta",
-                "desc": "La etiqueta del evento"
+                "name": "Acción",
+                "desc": "La acción realizada"
               }
             }
           },
           "GameplayStart": {
-            "list-name": "Inicio de jugabilidad",
-            "display-text": "Inicio de jugabilidad",
-            "description": "Notificar al SDK que ha comenzado la jugabilidad",
+            "list-name": "Inicio de juego",
+            "display-text": "Inicio de juego",
+            "description": "Notifica al SDK que el juego ha comenzado",
             "params": {}
           },
           "GameplayStop": {
-            "list-name": "Fin de jugabilidad",
-            "display-text": "Fin de jugabilidad",
-            "description": "Notificar al SDK que ha finalizado la jugabilidad",
+            "list-name": "Fin de juego",
+            "display-text": "Fin de juego",
+            "description": "Notifica al SDK que el juego ha terminado",
             "params": {}
           },
           "LoadingEnd": {
             "list-name": "Fin de carga",
             "display-text": "Fin de carga",
-            "description": "Notificar manualmente al SDK que el juego ha terminado de cargar",
+            "description": "Notifica manualmente al SDK que el juego ha terminado de cargar",
             "params": {}
           }
         },
         "conditions": {
           "LastRewardedSuccess": {
-            "list-name": "Último éxito recompensado",
-            "display-text": "Último éxito recompensado",
-            "description": "Último éxito recompensado",
+            "list-name": "Última recompensa exitosa",
+            "display-text": "Última recompensa exitosa",
+            "description": "Última recompensa exitosa",
             "params": {}
           },
           "OnIntertsitialComplete": {
-            "list-name": "Al completar anuncio intersticial",
-            "display-text": "Al completar anuncio intersticial [i]{0}[/i]",
+            "list-name": "Al completar intersticial",
+            "display-text": "Al completar intersticial [i]{0}[/i]",
             "description": "Se activa cuando se completa un anuncio intersticial",
             "params": {
               "tag": {
@@ -141,8 +145,8 @@
             }
           },
           "OnRewardedComplete": {
-            "list-name": "Al completar anuncio recompensado",
-            "display-text": "Al completar anuncio recompensado [i]{0}[/i]",
+            "list-name": "Al completar recompensado",
+            "display-text": "Al completar recompensado [i]{0}[/i]",
             "description": "Se activa cuando se completa un anuncio recompensado",
             "params": {
               "tag": {
@@ -152,13 +156,13 @@
             }
           },
           "IsEnabled": {
-            "list-name": "SDK está activado",
+            "list-name": "SDK activado",
             "display-text": "El SDK está activado",
             "description": "Comprueba si el SDK está activado",
             "params": {}
           },
           "IsLoaded": {
-            "list-name": "SDK está cargado",
+            "list-name": "SDK cargado",
             "display-text": "El SDK está cargado",
             "description": "Comprueba si el SDK está cargado",
             "params": {}
@@ -166,13 +170,13 @@
         },
         "expressions": {
           "LastAdTag": {
-            "translated-name": "Última etiqueta de anuncio",
+            "translated-name": "ÚltimaEtiquetaAnuncio",
             "description": "Última etiqueta de anuncio",
             "params": {}
           },
           "LastRewardedSuccess": {
-            "translated-name": "Último éxito recompensado",
-            "description": "Último éxito recompensado",
+            "translated-name": "ÚltimaRecompensaExitosa",
+            "description": "Última recompensa exitosa",
             "params": {}
           }
         }

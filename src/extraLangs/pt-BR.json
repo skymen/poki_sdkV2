@@ -9,7 +9,7 @@
         "help-url": "https://sdk.poki.com/",
         "aceCategories": {
           "ads": "anúncios",
-          "analytics": "análises",
+          "analytics": "análise",
           "gameplay": "jogabilidade",
           "misc": "diversos"
         },
@@ -24,20 +24,20 @@
             }
           },
           "debug": {
-            "name": "Modo de depuração na visualização",
-            "desc": "Se deve habilitar o modo de depuração"
+            "name": "Depurar na visualização",
+            "desc": "Se deve ativar o modo de depuração"
           },
           "gameId": {
-            "name": "ID do jogo",
-            "desc": "Insira o ID do jogo aqui para que o beacon funcione"
+            "name": "ID do Jogo",
+            "desc": "Insira o ID do jogo aqui para o beacon funcionar"
           },
           "doBeacon": {
             "name": "Enviar beacon",
-            "desc": "Se deve enviar beacons para a Poki"
+            "desc": "Se deve enviar beacons para o Poki"
           },
           "beaconInterval": {
             "name": "Intervalo do beacon",
-            "desc": "Número de segundos entre beacons"
+            "desc": "Número de segundos entre os beacons"
           },
           "maxBeacons": {
             "name": "Máximo de beacons",
@@ -58,7 +58,11 @@
           },
           "suspendTimeout": {
             "name": "Tempo limite de suspensão",
-            "desc": "Número de segundos a aguardar antes de suspender o SDK"
+            "desc": "Número de segundos para esperar antes de suspender o SDK"
+          },
+          "autoDelayGameplayStart": {
+            "name": "Atraso automático no início da jogabilidade",
+            "desc": "Atrasar automaticamente o início da jogabilidade para aguardar a interação do usuário"
           }
         },
         "actions": {
@@ -94,12 +98,12 @@
                 "desc": "A categoria do evento"
               },
               "action": {
-                "name": "Ação",
-                "desc": "A ação do evento"
+                "name": "O quê",
+                "desc": "Sobre o que é o evento"
               },
               "label": {
-                "name": "Rótulo",
-                "desc": "O rótulo do evento"
+                "name": "Ação",
+                "desc": "A ação realizada"
               }
             }
           },
@@ -110,8 +114,8 @@
             "params": {}
           },
           "GameplayStop": {
-            "list-name": "Fim da Jogabilidade",
-            "display-text": "Fim da Jogabilidade",
+            "list-name": "Parada da Jogabilidade",
+            "display-text": "Parada da Jogabilidade",
             "description": "Notificar o SDK que a jogabilidade parou",
             "params": {}
           },
@@ -130,9 +134,9 @@
             "params": {}
           },
           "OnIntertsitialComplete": {
-            "list-name": "Ao Concluir Anúncio Intersticial",
-            "display-text": "Ao Concluir Anúncio Intersticial [i]{0}[/i]",
-            "description": "Acionado quando um anúncio intersticial é concluído",
+            "list-name": "Ao Completar Intersticial",
+            "display-text": "Ao Completar Intersticial [i]{0}[/i]",
+            "description": "Disparado quando um anúncio intersticial é completado",
             "params": {
               "tag": {
                 "name": "Tag",
@@ -141,9 +145,9 @@
             }
           },
           "OnRewardedComplete": {
-            "list-name": "Ao Concluir Anúncio Recompensado",
-            "display-text": "Ao Concluir Anúncio Recompensado [i]{0}[/i]",
-            "description": "Acionado quando um anúncio recompensado é concluído",
+            "list-name": "Ao Completar Recompensado",
+            "display-text": "Ao Completar Recompensado [i]{0}[/i]",
+            "description": "Disparado quando um anúncio recompensado é completado",
             "params": {
               "tag": {
                 "name": "Tag",
@@ -154,20 +158,20 @@
           "IsEnabled": {
             "list-name": "SDK Está Ativado",
             "display-text": "SDK está ativado",
-            "description": "Verificar se o SDK está ativado",
+            "description": "Verifica se o SDK está ativado",
             "params": {}
           },
           "IsLoaded": {
             "list-name": "SDK Está Carregado",
             "display-text": "SDK está carregado",
-            "description": "Verificar se o SDK está carregado",
+            "description": "Verifica se o SDK está carregado",
             "params": {}
           }
         },
         "expressions": {
           "LastAdTag": {
-            "translated-name": "ÚltimaTagDoAnúncio",
-            "description": "Última Tag do Anúncio",
+            "translated-name": "ÚltimaTagAnúncio",
+            "description": "Última Tag de Anúncio",
             "params": {}
           },
           "LastRewardedSuccess": {

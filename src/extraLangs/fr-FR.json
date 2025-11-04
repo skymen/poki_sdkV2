@@ -10,7 +10,7 @@
         "aceCategories": {
           "ads": "publicités",
           "analytics": "analytique",
-          "gameplay": "gameplay",
+          "gameplay": "jeu",
           "misc": "divers"
         },
         "properties": {
@@ -19,24 +19,24 @@
             "desc": "Indique si le SDK est activé",
             "items": {
               "disabled": "Désactivé",
-              "enabled_export": "Activé à l'export",
+              "enabled_export": "Activé à l'exportation",
               "enabled": "Activé"
             }
           },
           "debug": {
-            "name": "Mode de débogage en prévisualisation",
-            "desc": "Indique si le mode de débogage est activé"
+            "name": "Déboguer en aperçu",
+            "desc": "Indique si le mode débogage est activé"
           },
           "gameId": {
             "name": "ID du jeu",
-            "desc": "Entrez ici l'ID du jeu pour que le beacon fonctionne"
+            "desc": "Entrez l'ID du jeu ici pour que le beacon fonctionne"
           },
           "doBeacon": {
-            "name": "Effectuer le beacon",
-            "desc": "Indique si les beacons doivent être envoyés à Poki"
+            "name": "Envoyer un beacon",
+            "desc": "Indique s'il faut envoyer des beacons à Poki"
           },
           "beaconInterval": {
-            "name": "Intervalle du beacon",
+            "name": "Intervalle de beacon",
             "desc": "Nombre de secondes entre les beacons"
           },
           "maxBeacons": {
@@ -47,9 +47,9 @@
             "name": "Notification de chargement",
             "desc": "Quand notifier le DOM que le jeu a fini de charger",
             "items": {
-              "immediate": "Immédiatement",
-              "afterFirstLayout": "Après le premier rendu",
-              "manual": "Manuellement"
+              "immediate": "Immédiat",
+              "afterFirstLayout": "Après la première mise en page",
+              "manual": "Manuel"
             }
           },
           "automaticSuspend": {
@@ -59,6 +59,10 @@
           "suspendTimeout": {
             "name": "Délai de suspension",
             "desc": "Nombre de secondes à attendre avant de suspendre le SDK"
+          },
+          "autoDelayGameplayStart": {
+            "name": "Démarrage du jeu retardé automatiquement",
+            "desc": "Retarde automatiquement le démarrage du jeu pour attendre l'interaction de l'utilisateur"
           }
         },
         "actions": {
@@ -74,7 +78,7 @@
             }
           },
           "Rewarded": {
-            "list-name": "Récompensé",
+            "list-name": "Récompensée",
             "display-text": "Demander une publicité récompensée [i]{0}[/i]",
             "description": "Demander une publicité récompensée",
             "params": {
@@ -86,33 +90,33 @@
           },
           "SendEvent": {
             "list-name": "Envoyer un événement",
-            "display-text": "Envoyer un événement d'analytique [i]{0}[/i], [i]{1}[/i], [i]{2}[/i]",
-            "description": "Envoyer un événement d'analytique",
+            "display-text": "Envoyer un événement analytique [i]{0}[/i], [i]{1}[/i], [i]{2}[/i]",
+            "description": "Envoyer un événement analytique",
             "params": {
               "category": {
                 "name": "Catégorie",
                 "desc": "La catégorie de l'événement"
               },
               "action": {
-                "name": "Action",
-                "desc": "L'action de l'événement"
+                "name": "Quoi",
+                "desc": "À propos de quoi est l'événement"
               },
               "label": {
-                "name": "Libellé",
-                "desc": "Le libellé de l'événement"
+                "name": "Action",
+                "desc": "L'action effectuée"
               }
             }
           },
           "GameplayStart": {
-            "list-name": "Début du gameplay",
-            "display-text": "Début du gameplay",
-            "description": "Notifier le SDK que le gameplay a commencé",
+            "list-name": "Début du jeu",
+            "display-text": "Début du jeu",
+            "description": "Notifier le SDK que le jeu a commencé",
             "params": {}
           },
           "GameplayStop": {
-            "list-name": "Fin du gameplay",
-            "display-text": "Fin du gameplay",
-            "description": "Notifier le SDK que le gameplay est terminé",
+            "list-name": "Fin du jeu",
+            "display-text": "Fin du jeu",
+            "description": "Notifier le SDK que le jeu est terminé",
             "params": {}
           },
           "LoadingEnd": {
@@ -124,15 +128,15 @@
         },
         "conditions": {
           "LastRewardedSuccess": {
-            "list-name": "Dernier succès récompensé",
-            "display-text": "Dernier succès récompensé",
-            "description": "Dernier succès récompensé",
+            "list-name": "Dernière récompense réussie",
+            "display-text": "Dernière récompense réussie",
+            "description": "Dernière récompense réussie",
             "params": {}
           },
           "OnIntertsitialComplete": {
             "list-name": "À la fin de l'interstitiel",
             "display-text": "À la fin de l'interstitiel [i]{0}[/i]",
-            "description": "Déclenché lorsque la publicité interstitielle est terminée",
+            "description": "Déclenché lorsqu'une publicité interstitielle est terminée",
             "params": {
               "tag": {
                 "name": "Tag",
@@ -143,7 +147,7 @@
           "OnRewardedComplete": {
             "list-name": "À la fin de la récompense",
             "display-text": "À la fin de la récompense [i]{0}[/i]",
-            "description": "Déclenché lorsque la publicité récompensée est terminée",
+            "description": "Déclenché lorsqu'une publicité récompensée est terminée",
             "params": {
               "tag": {
                 "name": "Tag",
@@ -167,7 +171,7 @@
         "expressions": {
           "LastAdTag": {
             "translated-name": "DernierTagPub",
-            "description": "Dernier Tag de Publicité",
+            "description": "Dernier tag de publicité",
             "params": {}
           },
           "LastRewardedSuccess": {
