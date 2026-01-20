@@ -9,7 +9,6 @@ export const config = {
   params: [
     {
       id: "topPercent",
-      autocompleteId: "topPercent",
       name: "Top Percent",
       desc: "Vertical position as percentage from top (0-50)",
       type: "number",
@@ -17,7 +16,6 @@ export const config = {
     },
     {
       id: "topPx",
-      autocompleteId: "topPx",
       name: "Top Pixels",
       desc: "Additional pixel offset (positive moves down, negative moves up)",
       type: "number",
