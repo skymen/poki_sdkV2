@@ -124,6 +124,21 @@
             "display-text": "Loading End",
             "description": "Manually notify the SDK that the game has finished loading",
             "params": {}
+          },
+          "MovePill": {
+            "list-name": "Move Pill",
+            "display-text": "Move pill [i]{0}[/i]% from top + [i]{1}[/i]px",
+            "description": "Reposition the Poki Pill on mobile. topPercent (0-50) sets vertical position as percentage from top, topPx is additional pixel offset (positive moves down, negative moves up)",
+            "params": {
+              "topPercent": {
+                "name": "Top Percent",
+                "desc": "Vertical position as percentage from top (0-50)"
+              },
+              "topPx": {
+                "name": "Top Pixels",
+                "desc": "Additional pixel offset (positive moves down, negative moves up)"
+              }
+            }
           }
         },
         "conditions": {

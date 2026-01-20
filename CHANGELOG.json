@@ -3,5 +3,10 @@
     "added": "Added support for moving Poki's pill",
     "changed": "",
     "fixed": ""
+  },
+  "2.2.1.0": {
+    "added": "",
+    "changed": "",
+    "fixed": "Removed disallowed autocompleteIds from the move pill params"
   }
 }
