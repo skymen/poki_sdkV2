@@ -124,6 +124,21 @@
             "display-text": "Fin de carga",
             "description": "Notifica manualmente al SDK que el juego ha terminado de cargar",
             "params": {}
+          },
+          "MovePill": {
+            "list-name": "Mover Píldora",
+            "display-text": "Mover píldora [i]{0}[/i]% desde arriba + [i]{1}[/i]px",
+            "description": "Reposicionar la Píldora Poki en móvil. topPercent (0-50) establece la posición vertical como porcentaje desde arriba, topPx es el desplazamiento adicional en píxeles (positivo mueve hacia abajo, negativo hacia arriba)",
+            "params": {
+              "topPercent": {
+                "name": "Porcentaje Superior",
+                "desc": "Posición vertical como porcentaje desde arriba (0-50)"
+              },
+              "topPx": {
+                "name": "Píxeles Superiores",
+                "desc": "Desplazamiento adicional en píxeles (positivo mueve hacia abajo, negativo hacia arriba)"
+              }
+            }
           }
         },
         "conditions": {

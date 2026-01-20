@@ -124,6 +124,21 @@
             "display-text": "Fim do Carregamento",
             "description": "Notificar manualmente o SDK que o jogo terminou de carregar",
             "params": {}
+          },
+          "MovePill": {
+            "list-name": "Mover Pílula",
+            "display-text": "Mover pílula [i]{0}[/i]% do topo + [i]{1}[/i]px",
+            "description": "Reposicionar a Pílula Poki no celular. topPercent (0-50) define a posição vertical como porcentagem do topo, topPx é o deslocamento adicional em pixels (positivo move para baixo, negativo para cima)",
+            "params": {
+              "topPercent": {
+                "name": "Porcentagem Superior",
+                "desc": "Posição vertical como porcentagem do topo (0-50)"
+              },
+              "topPx": {
+                "name": "Pixels Superiores",
+                "desc": "Deslocamento adicional em pixels (positivo move para baixo, negativo para cima)"
+              }
+            }
           }
         },
         "conditions": {

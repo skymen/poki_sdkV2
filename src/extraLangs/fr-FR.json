@@ -124,6 +124,21 @@
             "display-text": "Fin du chargement",
             "description": "Notifier manuellement le SDK que le jeu a fini de charger",
             "params": {}
+          },
+          "MovePill": {
+            "list-name": "Déplacer la Pilule",
+            "display-text": "Déplacer la pilule [i]{0}[/i]% du haut + [i]{1}[/i]px",
+            "description": "Repositionner la Pilule Poki sur mobile. topPercent (0-50) définit la position verticale en pourcentage depuis le haut, topPx est le décalage en pixels supplémentaire (positif déplace vers le bas, négatif vers le haut)",
+            "params": {
+              "topPercent": {
+                "name": "Pourcentage Supérieur",
+                "desc": "Position verticale en pourcentage depuis le haut (0-50)"
+              },
+              "topPx": {
+                "name": "Pixels Supérieurs",
+                "desc": "Décalage en pixels supplémentaire (positif déplace vers le bas, négatif vers le haut)"
+              }
+            }
           }
         },
         "conditions": {
