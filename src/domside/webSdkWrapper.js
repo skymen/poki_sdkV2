@@ -57,7 +57,7 @@ let supportedNetworks = [
 
             navigator.sendBeacon(
               `https://leveldata.poki.io/${type}`,
-              data.poki_gameId
+              data.poki_gameId,
             );
           }
         };
@@ -118,6 +118,11 @@ let supportedNetworks = [
           beacon(`${category}_${action}`);
           sdk.measure(category, what, action);
         });
+        listen("movePill", (topPercent, topPx) => {
+          if (sdk && sdk.movePill) {
+            sdk.movePill(topPercent, topPx);
+          }
+        });
       },
     },
   },
@@ -158,7 +163,7 @@ const Wrapper = {
   init(name, debug = false, data = {}) {
     return new Promise(async (resolve) => {
       currentSdk = supportedNetworks.find(
-        (x) => x.name.toLowerCase() === name.toLowerCase()
+        (x) => x.name.toLowerCase() === name.toLowerCase(),
       );
       if (currentSdk) {
         enabled = true;
@@ -188,15 +193,15 @@ const Wrapper = {
                   (src) =>
                     new Promise((resolve) => {
                       addScript(src, currentSdk.name + "-jssdk", resolve);
-                    })
-                )
+                    }),
+                ),
               );
               onInit();
             } else {
               addScript(
                 currentSdk.scriptSrc,
                 currentSdk.name + "-jssdk",
-                onInit
+                onInit,
               );
             }
           } else {
@@ -279,6 +284,9 @@ const Wrapper = {
   },
   analyticsEvent({ category, what, action }) {
     dispatch("analyticsEvent", category, what, action);
+  },
+  movePill(topPercent, topPx) {
+    dispatch("movePill", topPercent, topPx);
   },
 };
 

@@ -12,6 +12,10 @@ export default function (parentClass) {
         ["Interstitial", WebSdkWrapper.interstitial],
         ["Rewarded", WebSdkWrapper.rewarded],
         ["AnalyticsEvent", WebSdkWrapper.analyticsEvent],
+        [
+          "MovePill",
+          (data) => WebSdkWrapper.movePill(data.topPercent, data.topPx),
+        ],
       ]);
     }
 
