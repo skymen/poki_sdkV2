@@ -8,5 +8,10 @@
     "added": "",
     "changed": "",
     "fixed": "Removed disallowed autocompleteIds from the move pill params"
+  },
+  "2.2.1.1": {
+    "added": "",
+    "changed": "",
+    "fixed": "Added translations"
   }
 }
