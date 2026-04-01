@@ -35,6 +35,7 @@ function addonFromConfig() {
   return {
     "is-c3-addon": true,
     "sdk-version": 2,
+    "min-construct-version": config.minConstructVersion,
     type: config.addonType,
     name: config.name,
     id: config.id,

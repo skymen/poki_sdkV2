@@ -7,10 +7,11 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "joi": "^17.13.3",
+    "open": "^10.1.0",
+    "terser": "^5.44.1",
     "vite": "^6.0.7",
     "webpack-cli": "^6.0.1",
-    "yocto-spinner": "^0.1.2",
-    "open": "^10.1.0"
+    "yocto-spinner": "^0.1.2"
   },
   "type": "module",
   "scripts": {

@@ -35,12 +35,46 @@ jobs:
           echo "Last modified file version: $version"
           echo "version=$version" >> $GITHUB_OUTPUT
 
+      - name: Extract changelog for version
+        id: changelog
+        run: |
+          if [ -f "CHANGELOG.json" ]; then
+            version="${{ steps.getfile.outputs.version }}"
+            # Extract changelog for this version from JSON
+            changelog=$(node -e "
+              const fs = require('fs');
+              const data = JSON.parse(fs.readFileSync('CHANGELOG.json', 'utf-8'));
+              if (data['$version']) {
+                const v = data['$version'];
+                let output = [];
+                if (v.added) output.push('**Added:**\\n' + v.added);
+                if (v.changed) output.push('**Changed:**\\n' + v.changed);
+                if (v.fixed) output.push('**Fixed:**\\n' + v.fixed);
+                console.log(output.join('\\n\\n'));
+              }
+            ")
+            if [ -n "$changelog" ]; then
+              echo "Found changelog for version ${{ steps.getfile.outputs.version }}"
+              echo "changelog<<EOF" >> $GITHUB_OUTPUT
+              echo "$changelog" >> $GITHUB_OUTPUT
+              echo "EOF" >> $GITHUB_OUTPUT
+              echo "has_changelog=true" >> $GITHUB_OUTPUT
+            else
+              echo "No changelog entry found for this version"
+              echo "has_changelog=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No CHANGELOG.json file found"
+            echo "has_changelog=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/${{ steps.getfile.outputs.filename }}"
-          omitBody: true
+          body: ${{ steps.changelog.outputs.has_changelog == 'true' && steps.changelog.outputs.changelog || '' }}
+          omitBody: ${{ steps.changelog.outputs.has_changelog != 'true' }}
           tag: ${{ steps.getfile.outputs.filename }}
           name: v${{ steps.getfile.outputs.version }}
           allowUpdates: true
@@ -80,10 +114,54 @@ jobs:
       - name: Publish to Construct 3
         if: steps.check.outputs.publish == 'true'
         run: |
+          if [ "${{ steps.changelog.outputs.has_changelog }}" = "true" ]; then
+            release_notes="${{ steps.changelog.outputs.changelog }}"
+          else
+            release_notes="Released via GitHub Actions"
+          fi
           c3addon publish \
             --addonUrl '${{steps.url.outputs.url}}' \
             --authUser ${{ secrets.C3_AUTH_USER }} \
             --authPassword ${{ secrets.C3_AUTH_PASSWORD }} \
             --uploadFile dist/${{ steps.getfile.outputs.filename }} \
             --version ${{ steps.getfile.outputs.version }} \
-            --releaseNotes 'Released via GitHub Actions'
+            --releaseNotes "$release_notes"
+
+      - name: Check if itch.io variables are set
+        id: check_itch
+        run: |
+          publish=true
+          if [[ -z "${{ secrets.BUTLER_API_KEY }}" ]]; then
+            echo "BUTLER_API_KEY is not set. skip itch.io publishing."
+            publish=false
+          fi
+          echo "publish=$publish" >> $GITHUB_OUTPUT
+
+      - name: Get Itch.io Page
+        if: steps.check_itch.outputs.publish == 'true'
+        id: itchio
+        run: |
+          itchioPage=$(grep -oP 'itchioPage:\s?"\K[^"]*' buildconfig.js | cut -d '"' -f 1)
+          echo "Itch.io Page: $itchioPage"
+          if [[ -z "$itchioPage" ]]; then
+            echo "Itch.io Page is not set. skip itch.io publishing."
+            exit 1
+          fi
+
+          # Extract username and game ID from "username/game-id" format
+          itchUsername=$(echo "$itchioPage" | cut -d '/' -f 1)
+          itchGameId=$(echo "$itchioPage" | cut -d '/' -f 2)
+
+          echo "username=$itchUsername" >> $GITHUB_OUTPUT
+          echo "gameId=$itchGameId" >> $GITHUB_OUTPUT
+
+      - name: Publish to Itch.io
+        if: steps.check_itch.outputs.publish == 'true'
+        uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{ secrets.BUTLER_API_KEY }}
+          gameData: dist/${{ steps.getfile.outputs.filename }}
+          itchUsername: ${{ steps.itchio.outputs.username }}
+          itchGameId: ${{ steps.itchio.outputs.gameId }}
+          buildChannel: c3addon
+          buildNumber: ${{ steps.getfile.outputs.version }}

@@ -2,15 +2,47 @@ import express from "express";
 import { exec } from "child_process";
 import chokidar from "chokidar";
 import cors from "cors";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import fromConsole from "./fromConsole.js";
 import * as chalkUtils from "./chalkUtils.js";
 import { basePort } from "../devConfig.js";
+import cleanup from "./cleanup.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DEV_LOCK_FILE = path.resolve(__dirname, "../.dev-server-running");
 
 let port = basePort;
 const localHostURL = () => `http://localhost:${port}/addon.json`;
 let buildRunning = false;
 
 export default async function dev() {
+  // Create lock file to indicate dev server is running
+  fs.writeFileSync(DEV_LOCK_FILE, String(process.pid));
+  chalkUtils.info("Dev server lock file created");
+
+  // Clean up lock file on exit
+  const cleanupLockFile = () => {
+    if (fs.existsSync(DEV_LOCK_FILE)) {
+      fs.unlinkSync(DEV_LOCK_FILE);
+      chalkUtils.info("Dev server lock file removed");
+    }
+    cleanup();
+  };
+
+  process.on("SIGINT", () => {
+    cleanupLockFile();
+    process.exit(0);
+  });
+
+  process.on("SIGTERM", () => {
+    cleanupLockFile();
+    process.exit(0);
+  });
+
+  process.on("exit", cleanupLockFile);
   // Execute build command
   const runBuild = () => {
     if (buildRunning) return;
@@ -26,6 +58,7 @@ export default async function dev() {
       );
     });
     childProcess.stdout.pipe(process.stdout);
+    childProcess.stderr.pipe(process.stderr);
   };
 
   // Run initial build

@@ -4,21 +4,37 @@ export default function (ADDON_INFO, parentClass) {
     constructor() {
       super(ADDON_INFO.id);
       SDK.Lang.PushContext(
-        `${ADDON_INFO.addonType}s.${ADDON_INFO.id.toLowerCase()}`
+        `${ADDON_INFO.addonType}s.${ADDON_INFO.id.toLowerCase()}`,
       );
       this._info.SetName(self.lang(".name"));
       this._info.SetDescription(self.lang(".description"));
       this._info.SetCategory(ADDON_INFO.category);
       this._info.SetAuthor(ADDON_INFO.author);
       this._info.SetHelpUrl(self.lang(".help-url"));
-      this._info.SetRuntimeModuleMainScript("c3runtime/main.js");
-      this._info.SetC3RuntimeScripts(["c3runtime/main.js"]);
+      if (this._info.SetRuntimeModuleMainScript)
+        this._info.SetRuntimeModuleMainScript("c3runtime/main.js");
+      if (this._info.SetC3RuntimeScripts)
+        this._info.SetC3RuntimeScripts(["c3runtime/main.js"]);
       if (ADDON_INFO.info.icon) {
         this._info.SetIcon(
           ADDON_INFO.info.icon,
-          ADDON_INFO.info.icon.endsWith(".svg") ? "image/svg+xml" : "image/png"
+          ADDON_INFO.info.icon.endsWith(".svg") ? "image/svg+xml" : "image/png",
         );
       }
+
+      const properties = [];
+      const propertiesMap = {};
+      (ADDON_INFO.properties || []).forEach((prop) => {
+        const sdkProp = new SDK.PluginProperty(prop.type, prop.id, {
+          ...prop.options,
+          items:
+            prop.type === "combo" && prop.options.items
+              ? prop.options.items.map((i) => Object.keys(i)[0])
+              : undefined,
+        });
+        properties.push(sdkProp);
+        propertiesMap[prop.id] = sdkProp;
+      });
 
       if (ADDON_INFO.info && ADDON_INFO.info.Set) {
         Object.keys(ADDON_INFO.info.Set).forEach((key) => {
@@ -38,9 +54,18 @@ export default function (ADDON_INFO, parentClass) {
         });
       }
 
+      if (ADDON_INFO.files.remoteFileDependencies) {
+        ADDON_INFO.files.remoteFileDependencies.forEach((file) => {
+          this._info.AddRemoteScriptDependency(
+            file.src,
+            file.type === "module" ? "module" : undefined,
+          );
+        });
+      }
+
       if (ADDON_INFO.addonType === "plugin") {
         this._info.SetPluginType(
-          ADDON_INFO.type === "object" ? "object" : "world"
+          ADDON_INFO.type === "object" ? "object" : "world",
         );
 
         if (ADDON_INFO.info && ADDON_INFO.info.AddCommonACEs) {
@@ -56,7 +81,7 @@ export default function (ADDON_INFO, parentClass) {
           ADDON_INFO.info.Set.HasImage
         ) {
           this._info.SetDefaultImageURL(
-            `c3runtime/${ADDON_INFO.info.defaultImageUrl}`
+            `c3runtime/${ADDON_INFO.info.defaultImageUrl}`,
           );
         }
 
@@ -77,20 +102,35 @@ export default function (ADDON_INFO, parentClass) {
             });
           });
         }
+
+        if (ADDON_INFO.files.cordovaPluginReferences) {
+          ADDON_INFO.files.cordovaPluginReferences.forEach((plugin) => {
+            this._info.AddCordovaPluginReference({
+              id: plugin.id,
+              plugin:
+                plugin.plugin && plugin.plugin instanceof Function
+                  ? plugin.plugin(this)
+                  : plugin.variables
+                    ? this
+                    : undefined,
+              version: plugin.version,
+              platform: plugin.platform,
+              variables: plugin.variables
+                ? plugin.variables.map((v) => [v[0], propertiesMap[v[1]]])
+                : undefined,
+            });
+          });
+        }
+
+        if (ADDON_INFO.files.cordovaResourceFiles) {
+          ADDON_INFO.files.cordovaResourceFiles.forEach((file) => {
+            this._info.AddCordovaResourceFile(file);
+          });
+        }
       }
+
       SDK.Lang.PushContext(".properties");
-      this._info.SetProperties(
-        (ADDON_INFO.properties || []).map(
-          (prop) =>
-            new SDK.PluginProperty(prop.type, prop.id, {
-              ...prop.options,
-              items:
-                prop.type === "combo" && prop.options.items
-                  ? prop.options.items.map((i) => Object.keys(i)[0])
-                  : undefined,
-            })
-        )
-      );
+      this._info.SetProperties(properties);
       SDK.Lang.PopContext(); // .properties
       SDK.Lang.PopContext();
     }

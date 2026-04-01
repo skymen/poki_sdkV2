@@ -66,7 +66,7 @@ function langFromConfig() {
         root.properties[property.id].items[key] = item[key];
       });
     } else if (property.type === "link") {
-      root.properties[property.id]["link-text"] = property.linkText;
+      root.properties[property.id]["link-text"] = property.options.linkText;
     }
   });
 

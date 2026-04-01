@@ -2,6 +2,13 @@ import * as chalkUtils from "./chalkUtils.js";
 import removeDir from "./removeDir.js";
 import { cleanup as config } from "../buildconfig.js";
 import fromConsole from "./fromConsole.js";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DEV_LOCK_FILE = path.resolve(__dirname, "../.dev-server-running");
 
 export default function cleanup() {
   let hadError = false;
@@ -9,7 +16,15 @@ export default function cleanup() {
 
   chalkUtils.step("Cleaning up");
 
-  if (!config.keepExport) removeDir("../dist/export");
+  const isDevServerRunning = fs.existsSync(DEV_LOCK_FILE);
+
+  if (!config.keepExport) {
+    if (isDevServerRunning) {
+      chalkUtils.info("Skipping export cleanup - dev server is running");
+    } else {
+      removeDir("../dist/export");
+    }
+  }
   if (!config.keepExportStep) removeDir("../dist/exportStep");
   if (!config.keepGenerated) removeDir("../generated");
 

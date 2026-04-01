@@ -1,4 +1,6 @@
 export const ADDON_CATEGORY = {
+  ATTRIBUTES: "attributes",
+  MOVEMENTS: "movements",
   GENERAL: "general",
   _3D: "3d",
   DATA_AND_STORAGE: "data-and-storage",
@@ -37,4 +39,5 @@ export const PROPERTY_TYPE = {
   GROUP: "group",
   LINK: "link",
   INFO: "info",
+  PROJECTFILE: "projectfile",
 };

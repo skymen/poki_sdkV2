@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import * as chalkUtils from "./chalkUtils.js";
-import { files, hasDomside } from "../config.caw.js";
+import { files, hasDomside, id } from "../config.caw.js";
 import fromConsole from "./fromConsole.js";
 import { failOnUnusedFiles } from "../buildconfig.js";
 
@@ -40,6 +40,26 @@ export default function processDependencies() {
     }
   }
 
+  if (files.extensionScript && files.extensionScript.enabled) {
+    const targets = files.extensionScript.targets || [];
+    targets.forEach((target) => {
+      const dllName = `${
+        files.extensionScript.name
+      }_${target.toLowerCase()}.ext.dll`;
+      const src = path.resolve(`../src_cpp/Build/${dllName}`);
+      const dest = path.resolve(
+        `../dist/export/${id}_${target.toLowerCase()}.ext.dll`
+      );
+
+      if (!fs.existsSync(src)) {
+        chalkUtils.error(`File not found: ${chalkUtils._errorUnderline(src)}`);
+        hadError = true;
+      } else {
+        fs.copyFileSync(src, dest);
+      }
+    });
+  }
+
   // check if files in files folder exist but aren't in the config
   const filesDir = "../src/files";
   if (fs.existsSync(filesDir)) {
@@ -70,5 +90,5 @@ export default function processDependencies() {
 // if is being called from the command line
 if (fromConsole(import.meta.url)) {
   chalkUtils.fromCommandLine();
-  generateLangJSON();
+  processDependencies();
 }

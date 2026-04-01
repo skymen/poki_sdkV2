@@ -10,6 +10,7 @@ export const type = PLUGIN_TYPE.OBJECT;
 export const id = "skymen_pokiSDK";
 export const name = "Poki SDK";
 export const version = _version;
+export const minConstructVersion = undefined;
 export const author = "skymen, Avix Games";
 export const website = "https://github.com/skymen/poki_sdkV2";
 export const documentation = "https://sdk.poki.com/";

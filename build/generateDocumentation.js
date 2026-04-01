@@ -30,6 +30,79 @@ function getFileExtension(filename) {
   return filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
 }
 
+function formatChangelogEntry(versionData) {
+  const changes = [];
+
+  const categories = [
+    { key: "added", label: "Added" },
+    { key: "changed", label: "Changed" },
+    { key: "fixed", label: "Fixed" },
+  ];
+
+  for (const { key, label } of categories) {
+    if (versionData[key]) {
+      const items = versionData[key]
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      for (const item of items) {
+        changes.push(`- **${label}:** ${item}`);
+      }
+    }
+  }
+
+  return changes;
+}
+
+function getLatestChangelog(version) {
+  const changelogPath = path.join(__dirname, "CHANGELOG.json");
+  if (!fs.existsSync(changelogPath)) {
+    return null;
+  }
+
+  try {
+    const changelogContent = fs.readFileSync(changelogPath, "utf-8");
+    const changelog = JSON.parse(changelogContent);
+
+    if (!changelog[version]) {
+      return null;
+    }
+
+    const changes = formatChangelogEntry(changelog[version]);
+    return changes.length > 0 ? changes.join("\n") : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function getAllChangelogs() {
+  const changelogPath = path.join(__dirname, "CHANGELOG.json");
+  if (!fs.existsSync(changelogPath)) {
+    return null;
+  }
+
+  try {
+    const changelogContent = fs.readFileSync(changelogPath, "utf-8");
+    const changelog = JSON.parse(changelogContent);
+
+    // Sort versions in descending order (newest first)
+    const versions = Object.keys(changelog).sort((a, b) => {
+      const aParts = a.split(".").map(Number);
+      const bParts = b.split(".").map(Number);
+      for (let i = 0; i < 4; i++) {
+        if (aParts[i] !== bParts[i]) {
+          return bParts[i] - aParts[i];
+        }
+      }
+      return 0;
+    });
+
+    return { changelog, versions };
+  } catch (e) {
+    return null;
+  }
+}
+
 const __dirname = path.resolve("../");
 
 function getCoverImage() {
@@ -85,12 +158,33 @@ export default async function generateDocumentation() {
   readme.push("<br>");
   readme.push(`<sub> [See all releases](${githubUrl}/releases) </sub> <br>`);
 
+  // Add changelog section if CHANGELOG.json exists
+  const latestChangelog = getLatestChangelog(config.version);
+  if (latestChangelog) {
+    readme.push("");
+    readme.push(`#### What's New in ${config.version}`);
+    readme.push(latestChangelog);
+    readme.push("");
+    readme.push(`<sub>[View full changelog](#changelog)</sub>`);
+  }
+
   readme.push("");
   readme.push("---");
   readme.push(`<b><u>Author:</u></b> ${config.author} <br>`);
   if (publishConfig && publishConfig.addonUrl !== "") {
     readme.push(
       `<b>[Construct Addon Page](${publishConfig.addonUrl})</b>  <br>`
+    );
+  }
+  if (
+    publishConfig &&
+    publishConfig.itchioPage &&
+    publishConfig.itchioPage !== ""
+  ) {
+    // Split username/game-id to construct proper itch.io URL
+    const [username, gameId] = publishConfig.itchioPage.split("/");
+    readme.push(
+      `<b>[Itch.io Page](https://${username}.itch.io/${gameId})</b>  <br>`
     );
   }
   if (
@@ -268,6 +362,25 @@ export default async function generateDocumentation() {
     );
   });
   readme.push(``);
+
+  // Add full changelog section if CHANGELOG.json exists
+  const allChangelogs = getAllChangelogs();
+  if (allChangelogs) {
+    readme.push(``);
+    readme.push(`---`);
+    readme.push(`## Changelog`);
+    readme.push(``);
+
+    allChangelogs.versions.forEach((version) => {
+      const versionData = allChangelogs.changelog[version];
+      readme.push(`**${version}**`);
+
+      const formattedChanges = formatChangelogEntry(versionData);
+      formattedChanges.forEach((line) => readme.push(line));
+
+      readme.push(``);
+    });
+  }
 
   fs.writeFileSync(path.join(__dirname, "README.md"), readme.join("\n"));
 
