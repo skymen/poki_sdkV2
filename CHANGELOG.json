@@ -16,7 +16,7 @@
   },
   "2.3.0.0": {
     "added": "Accounts support",
-    "changed": "",
-    "fixed": ""
+    "changed": "Updated to new version of CAW framework",
+    "fixed": "Should no longer crash on older Construct versions"
   }
 }

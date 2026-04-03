@@ -9,6 +9,8 @@
 
 #### What's New in 2.3.0.0
 - **Added:** Accounts support
+- **Changed:** Updated to new version of CAW framework
+- **Fixed:** Should no longer crash on older Construct versions
 
 <sub>[View full changelog](#changelog)</sub>
 
@@ -105,6 +107,8 @@ npm run dev
 
 **2.3.0.0**
 - **Added:** Accounts support
+- **Changed:** Updated to new version of CAW framework
+- **Fixed:** Should no longer crash on older Construct versions
 
 **2.2.1.1**
 - **Fixed:** Added translations
