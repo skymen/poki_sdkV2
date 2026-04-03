@@ -11,7 +11,8 @@
           "ads": "anuncios",
           "analytics": "analítica",
           "gameplay": "jugabilidad",
-          "misc": "varios"
+          "misc": "varios",
+          "accounts": "cuentas"
         },
         "properties": {
           "enabled": {
@@ -139,6 +140,18 @@
                 "desc": "Desplazamiento adicional en píxeles (positivo mueve hacia abajo, negativo hacia arriba)"
               }
             }
+          },
+          "Login": {
+            "list-name": "Iniciar sesión",
+            "display-text": "Solicitar inicio de sesión del usuario",
+            "description": "Solicita al usuario iniciar sesión. Si el usuario inicia sesión, la página se recargará. Si ya ha iniciado sesión, se resuelve inmediatamente.",
+            "params": {}
+          },
+          "GetToken": {
+            "list-name": "Obtener token",
+            "display-text": "Obtener token de autenticación",
+            "description": "Obtiene un token JWT de corta duración para el usuario actual. El token expira en 1 minuto.",
+            "params": {}
           }
         },
         "conditions": {
@@ -181,6 +194,30 @@
             "display-text": "El SDK está cargado",
             "description": "Comprueba si el SDK está cargado",
             "params": {}
+          },
+          "IsLoggedIn": {
+            "list-name": "Sesión iniciada",
+            "display-text": "El usuario ha iniciado sesión",
+            "description": "Comprueba si un usuario ha iniciado sesión",
+            "params": {}
+          },
+          "OnLoginFailed": {
+            "list-name": "Al fallar inicio de sesión",
+            "display-text": "Al fallar inicio de sesión",
+            "description": "Se activa cuando el inicio de sesión falla (el usuario cerró el panel de autenticación o se agotó el tiempo)",
+            "params": {}
+          },
+          "OnGetToken": {
+            "list-name": "Al obtener token",
+            "display-text": "Al obtener token",
+            "description": "Se activa cuando un token JWT se ha obtenido exitosamente",
+            "params": {}
+          },
+          "OnUserChanged": {
+            "list-name": "Al cambiar usuario",
+            "display-text": "Al cambiar usuario",
+            "description": "Se activa cuando el estado del usuario cambia (después de cargar o después de iniciar sesión)",
+            "params": {}
           }
         },
         "expressions": {
@@ -192,6 +229,21 @@
           "LastRewardedSuccess": {
             "translated-name": "ÚltimaRecompensaExitosa",
             "description": "Última recompensa exitosa",
+            "params": {}
+          },
+          "Username": {
+            "translated-name": "NombreDeUsuario",
+            "description": "El nombre de usuario del usuario conectado actualmente",
+            "params": {}
+          },
+          "AvatarUrl": {
+            "translated-name": "UrlDeAvatar",
+            "description": "La URL del avatar del usuario conectado actualmente",
+            "params": {}
+          },
+          "Token": {
+            "translated-name": "Token",
+            "description": "El último token JWT de autenticación obtenido",
             "params": {}
           }
         }

@@ -11,7 +11,8 @@
           "ads": "publicités",
           "analytics": "analytique",
           "gameplay": "jeu",
-          "misc": "divers"
+          "misc": "divers",
+          "accounts": "comptes"
         },
         "properties": {
           "enabled": {
@@ -139,6 +140,18 @@
                 "desc": "Décalage en pixels supplémentaire (positif déplace vers le bas, négatif vers le haut)"
               }
             }
+          },
+          "Login": {
+            "list-name": "Connexion",
+            "display-text": "Demander la connexion de l'utilisateur",
+            "description": "Invite l'utilisateur à se connecter. Si l'utilisateur se connecte, la page sera rechargée. Si déjà connecté, se résout immédiatement.",
+            "params": {}
+          },
+          "GetToken": {
+            "list-name": "Obtenir le jeton",
+            "display-text": "Obtenir le jeton d'authentification",
+            "description": "Récupère un jeton JWT de courte durée pour l'utilisateur actuel. Le jeton expire en 1 minute.",
+            "params": {}
           }
         },
         "conditions": {
@@ -181,6 +194,30 @@
             "display-text": "Le SDK est chargé",
             "description": "Vérifie si le SDK est chargé",
             "params": {}
+          },
+          "IsLoggedIn": {
+            "list-name": "Est connecté",
+            "display-text": "L'utilisateur est connecté",
+            "description": "Vérifie si un utilisateur est actuellement connecté",
+            "params": {}
+          },
+          "OnLoginFailed": {
+            "list-name": "Échec de connexion",
+            "display-text": "Échec de connexion",
+            "description": "Déclenché lorsque la connexion échoue (l'utilisateur a fermé le panneau d'authentification ou le délai a expiré)",
+            "params": {}
+          },
+          "OnGetToken": {
+            "list-name": "À l'obtention du jeton",
+            "display-text": "À l'obtention du jeton",
+            "description": "Déclenché lorsqu'un jeton JWT a été récupéré avec succès",
+            "params": {}
+          },
+          "OnUserChanged": {
+            "list-name": "Au changement d'utilisateur",
+            "display-text": "Au changement d'utilisateur",
+            "description": "Déclenché lorsque l'état de l'utilisateur change (après le chargement ou après la connexion)",
+            "params": {}
           }
         },
         "expressions": {
@@ -192,6 +229,21 @@
           "LastRewardedSuccess": {
             "translated-name": "DernierSuccesRecompense",
             "description": "Dernier Succès Récompensé",
+            "params": {}
+          },
+          "Username": {
+            "translated-name": "NomUtilisateur",
+            "description": "Le nom d'utilisateur de l'utilisateur actuellement connecté",
+            "params": {}
+          },
+          "AvatarUrl": {
+            "translated-name": "UrlAvatar",
+            "description": "L'URL de l'avatar de l'utilisateur actuellement connecté",
+            "params": {}
+          },
+          "Token": {
+            "translated-name": "Jeton",
+            "description": "Le dernier jeton JWT d'authentification récupéré",
             "params": {}
           }
         }

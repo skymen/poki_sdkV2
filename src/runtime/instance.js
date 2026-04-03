@@ -12,6 +12,11 @@ export default function (parentClass) {
       this.hasAds = false;
       this.hasInterstitialAds = false;
       this.hasRewardedAds = false;
+      this.hasAccounts = false;
+      this.hasToken = false;
+      this._currentUser = null;
+      this._currentToken = null;
+      this._lastLoginError = "";
       this._willSuspend = false;
 
       // Props
@@ -57,6 +62,7 @@ export default function (parentClass) {
       this._addDOMMessageHandlers([
         ["SuspendRuntime", this._suspendRuntime.bind(this)],
         ["ResumeRuntime", this._resumeRuntime.bind(this)],
+        ["UserChanged", this._onUserChanged.bind(this)],
       ]);
 
       if (this._loadingNotification === 0) {
@@ -102,11 +108,13 @@ export default function (parentClass) {
             debug: this._debugModeActive,
             config: this.config,
           })
-            .then(({ enabled, hasAds, hasInterstitialAds, hasRewardedAds }) => {
+            .then(({ enabled, hasAds, hasInterstitialAds, hasRewardedAds, hasAccounts, hasToken }) => {
               this.sdkLoaded = enabled;
               this.hasAds = hasAds;
               this.hasInterstitialAds = hasInterstitialAds;
               this.hasRewardedAds = hasRewardedAds;
+              this.hasAccounts = hasAccounts;
+              this.hasToken = hasToken;
             })
             .catch(console.error)
         );
@@ -133,6 +141,11 @@ export default function (parentClass) {
 
     _loadFromJson(o) {
       // load state for savegames
+    }
+
+    _onUserChanged(user) {
+      this._currentUser = user;
+      this._trigger("OnUserChanged");
     }
 
     _suspendRuntime() {

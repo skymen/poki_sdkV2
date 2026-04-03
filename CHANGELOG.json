@@ -13,5 +13,10 @@
     "added": "",
     "changed": "",
     "fixed": "Added translations"
+  },
+  "2.3.0.0": {
+    "added": "Accounts support",
+    "changed": "",
+    "fixed": ""
   }
 }

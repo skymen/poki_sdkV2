@@ -8,6 +8,7 @@
         "description": "Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)",
         "help-url": "https://sdk.poki.com/",
         "aceCategories": {
+          "accounts": "accounts",
           "ads": "ads",
           "analytics": "analytics",
           "gameplay": "gameplay",
@@ -66,6 +67,18 @@
           }
         },
         "actions": {
+          "GetToken": {
+            "list-name": "Get Token",
+            "display-text": "Get authentication token",
+            "description": "Fetch a short-lived JWT token for the current user. The token expires in 1 minute.",
+            "params": {}
+          },
+          "Login": {
+            "list-name": "Login",
+            "display-text": "Prompt user login",
+            "description": "Prompt the user to log in. If the user logs in, the page will refresh. If already logged in, resolves immediately.",
+            "params": {}
+          },
           "Interstitial": {
             "list-name": "Interstitial",
             "display-text": "Request interstitial ad [i]{0}[/i]",
@@ -142,6 +155,30 @@
           }
         },
         "conditions": {
+          "IsLoggedIn": {
+            "list-name": "Is Logged In",
+            "display-text": "User is logged in",
+            "description": "Check if a user is currently logged in",
+            "params": {}
+          },
+          "OnGetToken": {
+            "list-name": "On Get Token",
+            "display-text": "On get token",
+            "description": "Triggered when a JWT token has been successfully fetched",
+            "params": {}
+          },
+          "OnLoginFailed": {
+            "list-name": "On Login Failed",
+            "display-text": "On login failed",
+            "description": "Triggered when login fails (user closed auth panel or login timed out)",
+            "params": {}
+          },
+          "OnUserChanged": {
+            "list-name": "On User Changed",
+            "display-text": "On user changed",
+            "description": "Triggered when the user state changes (after loading or after login)",
+            "params": {}
+          },
           "LastRewardedSuccess": {
             "list-name": "Last Rewarded Success",
             "display-text": "Last Rewarded Success",
@@ -184,6 +221,21 @@
           }
         },
         "expressions": {
+          "AvatarUrl": {
+            "translated-name": "AvatarUrl",
+            "description": "The avatar URL of the currently logged-in user",
+            "params": {}
+          },
+          "Token": {
+            "translated-name": "Token",
+            "description": "The last fetched JWT authentication token",
+            "params": {}
+          },
+          "Username": {
+            "translated-name": "Username",
+            "description": "The username of the currently logged-in user",
+            "params": {}
+          },
           "LastAdTag": {
             "translated-name": "LastAdTag",
             "description": "Last Ad Tag",

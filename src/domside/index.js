@@ -6,7 +6,7 @@ export default function (parentClass) {
       super(iRuntime);
       this.AddRuntimeMessageHandlers([
         ["Init", this.Init.bind(this)],
-        ["LoadingEnd", WebSdkWrapper.loadingEnd],
+        ["LoadingEnd", this._onLoadingEnd.bind(this)],
         ["GameplayStart", WebSdkWrapper.gameplayStart],
         ["GameplayStop", WebSdkWrapper.gameplayStop],
         ["Interstitial", WebSdkWrapper.interstitial],
@@ -16,7 +16,36 @@ export default function (parentClass) {
           "MovePill",
           (data) => WebSdkWrapper.movePill(data.topPercent, data.topPx),
         ],
+        ["Login", this._onLogin.bind(this)],
+        ["GetToken", () => WebSdkWrapper.getToken()],
       ]);
+    }
+
+    async _onLoadingEnd() {
+      WebSdkWrapper.loadingEnd();
+      if (WebSdkWrapper.hasAccounts()) {
+        try {
+          const user = await WebSdkWrapper.getUser();
+          this.PostToRuntime("UserChanged", user);
+        } catch (e) {
+          // accounts not available or user opted out
+          this.PostToRuntime("UserChanged", null);
+        }
+      }
+    }
+
+    async _onLogin() {
+      await WebSdkWrapper.login();
+      // If we reach here, user was already logged in (no page refresh)
+      // Fetch user and notify runtime
+      if (WebSdkWrapper.hasAccounts()) {
+        try {
+          const user = await WebSdkWrapper.getUser();
+          this.PostToRuntime("UserChanged", user);
+        } catch (e) {
+          this.PostToRuntime("UserChanged", null);
+        }
+      }
     }
 
     async Init({ debug, config }) {
@@ -34,6 +63,8 @@ export default function (parentClass) {
         hasAds: WebSdkWrapper.hasAds(),
         hasInterstitialAds: WebSdkWrapper.hasInterstitialAds(),
         hasRewardedAds: WebSdkWrapper.hasRewardedAds(),
+        hasAccounts: WebSdkWrapper.hasAccounts(),
+        hasToken: WebSdkWrapper.hasToken(),
       };
     }
   };

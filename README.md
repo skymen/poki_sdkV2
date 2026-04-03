@@ -1,11 +1,16 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.2.1.1
+### Version 2.3.0.0
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.2.1.1.c3addon/skymen_pokiSDK-2.2.1.1.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.3.0.0.c3addon/skymen_pokiSDK-2.3.0.0.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
+
+#### What's New in 2.3.0.0
+- **Added:** Accounts support
+
+<sub>[View full changelog](#changelog)</sub>
 
 ---
 <b><u>Author:</u></b> skymen, Avix Games <br>
@@ -58,6 +63,8 @@ npm run dev
 ## Actions
 | Action | Description | Params
 | --- | --- | --- |
+| Get Token | Fetch a short-lived JWT token for the current user. The token expires in 1 minute. |  |
+| Login | Prompt the user to log in. If the user logs in, the page will refresh. If already logged in, resolves immediately. |  |
 | Interstitial | Request an interstitial ad | Tag             *(string)* <br> |
 | Rewarded | Request a rewarded ad | Tag             *(string)* <br> |
 | Send Event | Send an analytics event | Category             *(string)* <br>What             *(string)* <br>Action             *(string)* <br> |
@@ -71,6 +78,10 @@ npm run dev
 ## Conditions
 | Condition | Description | Params
 | --- | --- | --- |
+| Is Logged In | Check if a user is currently logged in |  |
+| On Get Token | Triggered when a JWT token has been successfully fetched |  |
+| On Login Failed | Triggered when login fails (user closed auth panel or login timed out) |  |
+| On User Changed | Triggered when the user state changes (after loading or after login) |  |
 | Last Rewarded Success | Last Rewarded Success |  |
 | On Interstitial Complete | Triggered when an interstitial ad is completed | Tag *(string)* <br> |
 | On Rewarded Complete | Triggered when a rewarded ad is completed | Tag *(string)* <br> |
@@ -82,5 +93,24 @@ npm run dev
 ## Expressions
 | Expression | Description | Return Type | Params
 | --- | --- | --- | --- |
+| AvatarUrl | The avatar URL of the currently logged-in user | string |  | 
+| Token | The last fetched JWT authentication token | string |  | 
+| Username | The username of the currently logged-in user | string |  | 
 | LastAdTag | Last Ad Tag | string |  | 
 | LastRewardedSuccess | Last Rewarded Success | number |  | 
+
+
+---
+## Changelog
+
+**2.3.0.0**
+- **Added:** Accounts support
+
+**2.2.1.1**
+- **Fixed:** Added translations
+
+**2.2.1.0**
+- **Fixed:** Removed disallowed autocompleteIds from the move pill params
+
+**2.2.0.0**
+- **Added:** Added support for moving Poki's pill

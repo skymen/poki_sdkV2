@@ -23,8 +23,21 @@ let supportedNetworks = [
     noInterstitial: false,
     noRewarded: false,
     hasBanner: false,
+    hasAccounts: true,
+    hasToken: true,
     enableOnlyInProduction: false,
     implementation: {
+      account: {
+        login() {
+          return sdk.login();
+        },
+        getUser() {
+          return sdk.getUser();
+        },
+        getToken() {
+          return sdk.getToken();
+        },
+      },
       //async preInit(debug = false) {},
       init(debug = false, data) {
         return new Promise((resolve) => {
@@ -287,6 +300,30 @@ const Wrapper = {
   },
   movePill(topPercent, topPx) {
     dispatch("movePill", topPercent, topPx);
+  },
+  login() {
+    if (!currentSdk || !currentSdk.hasAccounts || !currentSdk.implementation.account) {
+      return Promise.reject(new Error("Accounts not supported"));
+    }
+    return currentSdk.implementation.account.login();
+  },
+  getUser() {
+    if (!currentSdk || !currentSdk.hasAccounts || !currentSdk.implementation.account) {
+      return Promise.resolve(null);
+    }
+    return currentSdk.implementation.account.getUser();
+  },
+  getToken() {
+    if (!currentSdk || !currentSdk.hasToken || !currentSdk.implementation.account) {
+      return Promise.resolve(null);
+    }
+    return currentSdk.implementation.account.getToken();
+  },
+  hasAccounts() {
+    return currentSdk && currentSdk.hasAccounts ? 1 : 0;
+  },
+  hasToken() {
+    return currentSdk && currentSdk.hasToken ? 1 : 0;
   },
 };
 

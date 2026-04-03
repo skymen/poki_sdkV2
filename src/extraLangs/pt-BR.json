@@ -11,7 +11,8 @@
           "ads": "anúncios",
           "analytics": "análise",
           "gameplay": "jogabilidade",
-          "misc": "diversos"
+          "misc": "diversos",
+          "accounts": "contas"
         },
         "properties": {
           "enabled": {
@@ -139,6 +140,18 @@
                 "desc": "Deslocamento adicional em pixels (positivo move para baixo, negativo para cima)"
               }
             }
+          },
+          "Login": {
+            "list-name": "Login",
+            "display-text": "Solicitar login do usuário",
+            "description": "Solicita ao usuário para fazer login. Se o usuário fizer login, a página será recarregada. Se já estiver logado, resolve imediatamente.",
+            "params": {}
+          },
+          "GetToken": {
+            "list-name": "Obter Token",
+            "display-text": "Obter token de autenticação",
+            "description": "Obtém um token JWT de curta duração para o usuário atual. O token expira em 1 minuto.",
+            "params": {}
           }
         },
         "conditions": {
@@ -181,6 +194,30 @@
             "display-text": "SDK está carregado",
             "description": "Verifica se o SDK está carregado",
             "params": {}
+          },
+          "IsLoggedIn": {
+            "list-name": "Está Logado",
+            "display-text": "O usuário está logado",
+            "description": "Verifica se um usuário está logado atualmente",
+            "params": {}
+          },
+          "OnLoginFailed": {
+            "list-name": "Ao Falhar Login",
+            "display-text": "Ao falhar login",
+            "description": "Disparado quando o login falha (o usuário fechou o painel de autenticação ou o tempo expirou)",
+            "params": {}
+          },
+          "OnGetToken": {
+            "list-name": "Ao Obter Token",
+            "display-text": "Ao obter token",
+            "description": "Disparado quando um token JWT foi obtido com sucesso",
+            "params": {}
+          },
+          "OnUserChanged": {
+            "list-name": "Ao Mudar Usuário",
+            "display-text": "Ao mudar usuário",
+            "description": "Disparado quando o estado do usuário muda (após o carregamento ou após o login)",
+            "params": {}
           }
         },
         "expressions": {
@@ -192,6 +229,21 @@
           "LastRewardedSuccess": {
             "translated-name": "ÚltimoSucessoRecompensado",
             "description": "Último Sucesso Recompensado",
+            "params": {}
+          },
+          "Username": {
+            "translated-name": "NomeDeUsuário",
+            "description": "O nome de usuário do usuário logado atualmente",
+            "params": {}
+          },
+          "AvatarUrl": {
+            "translated-name": "UrlDoAvatar",
+            "description": "A URL do avatar do usuário logado atualmente",
+            "params": {}
+          },
+          "Token": {
+            "translated-name": "Token",
+            "description": "O último token JWT de autenticação obtido",
             "params": {}
           }
         }
