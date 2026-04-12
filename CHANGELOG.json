@@ -18,5 +18,10 @@
     "added": "Accounts support",
     "changed": "Updated to new version of CAW framework",
     "fixed": "Should no longer crash on older Construct versions"
+  },
+  "2.3.0.1": {
+    "added": "Open External Link",
+    "changed": "",
+    "fixed": "The default ad params are properly sent through"
   }
 }

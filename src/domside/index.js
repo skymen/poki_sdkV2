@@ -16,6 +16,10 @@ export default function (parentClass) {
           "MovePill",
           (data) => WebSdkWrapper.movePill(data.topPercent, data.topPx),
         ],
+        [
+          "OpenExternalLink",
+          (data) => WebSdkWrapper.openExternalLink(data.url),
+        ],
         ["Login", this._onLogin.bind(this)],
         ["GetToken", () => WebSdkWrapper.getToken()],
       ]);

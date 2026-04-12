@@ -118,7 +118,7 @@ let supportedNetworks = [
           let lastRequestedAd = sdkContext.lastRequestedAd;
           sdk
             .rewardedBreak({
-              size: size || "medium",
+              size: size || "small",
               onStart: () => {
                 dispatch("adStarted", lastRequestedAd);
               },
@@ -134,6 +134,13 @@ let supportedNetworks = [
         listen("movePill", (topPercent, topPx) => {
           if (sdk && sdk.movePill) {
             sdk.movePill(topPercent, topPx);
+          }
+        });
+        listen("openExternalLink", (url) => {
+          if (sdk && sdk.openExternalLink) {
+            sdk.openExternalLink(url);
+          } else {
+            window.open(url, "_blank");
           }
         });
       },
@@ -301,20 +308,39 @@ const Wrapper = {
   movePill(topPercent, topPx) {
     dispatch("movePill", topPercent, topPx);
   },
+  openExternalLink(url) {
+    if (!currentSdk || !enabled) {
+      window.open(url, "_blank");
+      return;
+    }
+    dispatch("openExternalLink", url);
+  },
   login() {
-    if (!currentSdk || !currentSdk.hasAccounts || !currentSdk.implementation.account) {
+    if (
+      !currentSdk ||
+      !currentSdk.hasAccounts ||
+      !currentSdk.implementation.account
+    ) {
       return Promise.reject(new Error("Accounts not supported"));
     }
     return currentSdk.implementation.account.login();
   },
   getUser() {
-    if (!currentSdk || !currentSdk.hasAccounts || !currentSdk.implementation.account) {
+    if (
+      !currentSdk ||
+      !currentSdk.hasAccounts ||
+      !currentSdk.implementation.account
+    ) {
       return Promise.resolve(null);
     }
     return currentSdk.implementation.account.getUser();
   },
   getToken() {
-    if (!currentSdk || !currentSdk.hasToken || !currentSdk.implementation.account) {
+    if (
+      !currentSdk ||
+      !currentSdk.hasToken ||
+      !currentSdk.implementation.account
+    ) {
       return Promise.resolve(null);
     }
     return currentSdk.implementation.account.getToken();

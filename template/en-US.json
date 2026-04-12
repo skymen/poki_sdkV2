@@ -152,6 +152,17 @@
                 "desc": "Additional pixel offset (positive moves down, negative moves up)"
               }
             }
+          },
+          "OpenExternalLink": {
+            "list-name": "Open External Link",
+            "display-text": "Open external link [i]{0}[/i]",
+            "description": "Open an external link using Poki's openExternalLink API",
+            "params": {
+              "url": {
+                "name": "URL",
+                "desc": "The URL to open"
+              }
+            }
           }
         },
         "conditions": {
