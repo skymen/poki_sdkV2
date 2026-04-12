@@ -80,12 +80,21 @@
           },
           "Rewarded": {
             "list-name": "Recompensado",
-            "display-text": "Solicitar anuncio recompensado [i]{0}[/i]",
+            "display-text": "Solicitar anuncio recompensado {1} [i]{0}[/i]",
             "description": "Solicita un anuncio recompensado",
             "params": {
               "tag": {
                 "name": "Etiqueta",
                 "desc": "La etiqueta del anuncio"
+              },
+              "Size": {
+                "name": "Tamaño",
+                "desc": "El tamaño del anuncio",
+                "items": {
+                  "Small": "Pequeño",
+                  "Medium": "Mediano",
+                  "Large": "Grande"
+                }
               }
             }
           },
