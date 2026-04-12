@@ -8,6 +8,7 @@ export const config = {
   params: [
     {
       id: "category",
+      autocompleteId: "category",
       name: "Category",
       desc: "The category of the event",
       type: "string",
@@ -15,6 +16,7 @@ export const config = {
     },
     {
       id: "action",
+      autocompleteId: "action",
       name: "What",
       desc: "What the event is about",
       type: "string",
@@ -22,6 +24,7 @@ export const config = {
     },
     {
       id: "label",
+      autocompleteId: "label",
       name: "Action",
       desc: "The action that was taken",
       type: "string",
