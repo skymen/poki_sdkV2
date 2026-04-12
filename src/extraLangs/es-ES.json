@@ -152,6 +152,17 @@
             "display-text": "Obtener token de autenticación",
             "description": "Obtiene un token JWT de corta duración para el usuario actual. El token expira en 1 minuto.",
             "params": {}
+          },
+          "OpenExternalLink": {
+            "list-name": "Abrir enlace externo",
+            "display-text": "Abrir enlace externo [i]{0}[/i]",
+            "description": "Abre un enlace externo usando la API openExternalLink de Poki",
+            "params": {
+              "url": {
+                "name": "URL",
+                "desc": "La URL a abrir"
+              }
+            }
           }
         },
         "conditions": {

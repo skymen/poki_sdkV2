@@ -152,6 +152,17 @@
             "display-text": "Obtenir le jeton d'authentification",
             "description": "Récupère un jeton JWT de courte durée pour l'utilisateur actuel. Le jeton expire en 1 minute.",
             "params": {}
+          },
+          "OpenExternalLink": {
+            "list-name": "Ouvrir un lien externe",
+            "display-text": "Ouvrir un lien externe [i]{0}[/i]",
+            "description": "Ouvre un lien externe en utilisant l'API openExternalLink de Poki",
+            "params": {
+              "url": {
+                "name": "URL",
+                "desc": "L'URL à ouvrir"
+              }
+            }
           }
         },
         "conditions": {

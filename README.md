@@ -1,16 +1,15 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.3.0.0
+### Version 2.3.0.1
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.3.0.0.c3addon/skymen_pokiSDK-2.3.0.0.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.3.0.1.c3addon/skymen_pokiSDK-2.3.0.1.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
-#### What's New in 2.3.0.0
-- **Added:** Accounts support
-- **Changed:** Updated to new version of CAW framework
-- **Fixed:** Should no longer crash on older Construct versions
+#### What's New in 2.3.0.1
+- **Added:** Open External Link
+- **Fixed:** The default ad params are properly sent through
 
 <sub>[View full changelog](#changelog)</sub>
 
@@ -74,6 +73,7 @@ npm run dev
 | Gameplay Stop | Notify the SDK that the gameplay has stopped |  |
 | Loading End | Manually notify the SDK that the game has finished loading |  |
 | Move Pill | Reposition the Poki Pill on mobile. topPercent (0-50) sets vertical position as percentage from top, topPx is additional pixel offset (positive moves down, negative moves up) | Top Percent             *(number)* <br>Top Pixels             *(number)* <br> |
+| Open External Link | Open an external link using Poki's openExternalLink API | URL             *(string)* <br> |
 
 
 ---
@@ -104,6 +104,10 @@ npm run dev
 
 ---
 ## Changelog
+
+**2.3.0.1**
+- **Added:** Open External Link
+- **Fixed:** The default ad params are properly sent through
 
 **2.3.0.0**
 - **Added:** Accounts support
