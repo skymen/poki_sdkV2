@@ -86,15 +86,6 @@
               "tag": {
                 "name": "Etiqueta",
                 "desc": "La etiqueta del anuncio"
-              },
-              "Size": {
-                "name": "Tamaño",
-                "desc": "El tamaño del anuncio",
-                "items": {
-                  "Small": "Pequeño",
-                  "Medium": "Mediano",
-                  "Large": "Grande"
-                }
               }
             }
           },
