@@ -23,5 +23,10 @@
     "added": "Open External Link",
     "changed": "",
     "fixed": "The default ad params are properly sent through"
+  },
+  "2.3.0.2": {
+    "added": "",
+    "changed": "",
+    "fixed": "Delayed gameplay start now fires on pointer down instead of end of click"
   }
 }

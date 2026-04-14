@@ -168,9 +168,8 @@ function setupUserInteractionListener() {
   };
 
   // Listen for user interactions
-  document.addEventListener("click", handleInteraction, { once: true });
+  document.addEventListener("pointerdown", handleInteraction, { once: true });
   document.addEventListener("keydown", handleInteraction, { once: true });
-  document.addEventListener("touchstart", handleInteraction, { once: true });
 }
 
 const Wrapper = {

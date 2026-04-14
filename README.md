@@ -1,15 +1,14 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.3.0.1
+### Version 2.3.0.2
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.3.0.1.c3addon/skymen_pokiSDK-2.3.0.1.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.3.0.2.c3addon/skymen_pokiSDK-2.3.0.2.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
-#### What's New in 2.3.0.1
-- **Added:** Open External Link
-- **Fixed:** The default ad params are properly sent through
+#### What's New in 2.3.0.2
+- **Fixed:** Delayed gameplay start now fires on pointer down instead of end of click
 
 <sub>[View full changelog](#changelog)</sub>
 
@@ -67,7 +66,7 @@ npm run dev
 | Get Token | Fetch a short-lived JWT token for the current user. The token expires in 1 minute. |  |
 | Login | Prompt the user to log in. If the user logs in, the page will refresh. If already logged in, resolves immediately. |  |
 | Interstitial | Request an interstitial ad | Tag             *(string)* <br> |
-| Rewarded | Request a rewarded ad | Tag             *(string)* <br> |
+| Rewarded | Request a rewarded ad | Tag             *(string)* <br>Size             *(combo)* <br> |
 | Send Event | Send an analytics event | Category             *(string)* <br>What             *(string)* <br>Action             *(string)* <br> |
 | Gameplay Start | Notify the SDK that the gameplay has started |  |
 | Gameplay Stop | Notify the SDK that the gameplay has stopped |  |
@@ -104,6 +103,9 @@ npm run dev
 
 ---
 ## Changelog
+
+**2.3.0.2**
+- **Fixed:** Delayed gameplay start now fires on pointer down instead of end of click
 
 **2.3.0.1**
 - **Added:** Open External Link
