@@ -5,7 +5,8 @@ export const config = {
   deprecated: false,
   isAsync: true,
   listName: "Rewarded",
-  displayText: "Request {1} rewarded ad [i]{0}[/i]",
+  // displayText: "Request {1} rewarded ad [i]{0}[/i]",
+  displayText: "Request rewarded ad [i]{0}[/i]",
   description: "Request a rewarded ad",
   params: [
     {

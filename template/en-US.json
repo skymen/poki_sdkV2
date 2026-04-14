@@ -92,21 +92,12 @@
           },
           "Rewarded": {
             "list-name": "Rewarded",
-            "display-text": "Request {1} rewarded ad [i]{0}[/i]",
+            "display-text": "Request rewarded ad [i]{0}[/i]",
             "description": "Request a rewarded ad",
             "params": {
               "tag": {
                 "name": "Tag",
                 "desc": "The tag of the ad"
-              },
-              "Size": {
-                "name": "Size",
-                "desc": "The size of the ad",
-                "items": {
-                  "Small": "Small",
-                  "Medium": "Medium",
-                  "Large": "Large"
-                }
               }
             }
           },
