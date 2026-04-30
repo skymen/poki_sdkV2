@@ -6,6 +6,7 @@ preventWeirdInputs();
 let sdk;
 let currentSdk = null;
 let enabled = false;
+let submitScore = () => {};
 const sdkContext = {
   hasUserInteracted: false,
   pendingGameplayStart: false,
@@ -42,7 +43,11 @@ let supportedNetworks = [
       init(debug = false, data) {
         return new Promise((resolve) => {
           sdk
-            .init()
+            .init({
+              submitScore: cb => {
+                submitScore = cb;
+              },
+            })
             .then(() => {
               resolve();
             })
@@ -142,6 +147,9 @@ let supportedNetworks = [
           } else {
             window.open(url, "_blank");
           }
+        });
+        listen("submitScore", (name, score) => {
+          submitScore(name, score);
         });
       },
     },
@@ -313,6 +321,9 @@ const Wrapper = {
       return;
     }
     dispatch("openExternalLink", url);
+  },
+  submitScore(name, score) {
+    dispatch("submitScore", name, score);
   },
   login() {
     if (

@@ -163,6 +163,21 @@
                 "desc": "The URL to open"
               }
             }
+          },
+          "SubmitScore": {
+            "list-name": "Submit Score",
+            "display-text": "Submit score [i]{0}[/i] with value [i]{1}[/i]",
+            "description": "Submit a score using Poki's submitScore API",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the leaderboard"
+              },
+              "score": {
+                "name": "Score",
+                "desc": "The score to submit"
+              }
+            }
           }
         },
         "conditions": {

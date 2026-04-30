@@ -163,6 +163,21 @@
                 "desc": "La URL a abrir"
               }
             }
+          },
+          "SubmitScore": {
+            "list-name": "Enviar puntuación",
+            "display-text": "Enviar puntuación [i]{0}[/i] con valor [i]{1}[/i]",
+            "description": "Envía una puntuación usando la API submitScore de Poki",
+            "params": {
+              "name": {
+                "name": "Nombre",
+                "desc": "El nombre de la tabla de clasificación"
+              },
+              "score": {
+                "name": "Puntuación",
+                "desc": "La puntuación a enviar"
+              }
+            }
           }
         },
         "conditions": {

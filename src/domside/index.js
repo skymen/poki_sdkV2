@@ -20,6 +20,10 @@ export default function (parentClass) {
           "OpenExternalLink",
           (data) => WebSdkWrapper.openExternalLink(data.url),
         ],
+        [
+          "SubmitScore",
+          (data) => WebSdkWrapper.submitScore(data.name, data.score),
+        ],
         ["Login", this._onLogin.bind(this)],
         ["GetToken", () => WebSdkWrapper.getToken()],
       ]);
