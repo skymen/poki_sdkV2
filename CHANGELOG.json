@@ -43,5 +43,10 @@
     "added": "Added experimental support for submit score",
     "changed": "",
     "fixed": ""
+  },
+  "2.4.2.0": {
+    "added": "",
+    "changed": "",
+    "fixed": "Fixed language files causing a build error"
   }
 }

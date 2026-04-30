@@ -87,9 +87,14 @@
                 "name": "Tag",
                 "desc": "A tag do anúncio"
               },
-              "size": {
+              "Size": {
                 "name": "Tamanho",
-                "desc": "O tamanho do anúncio"
+                "desc": "O tamanho do anúncio",
+                "items": {
+                  "Small": "Pequeno",
+                  "Medium": "Médio",
+                  "Large": "Grande"
+                }
               }
             }
           },

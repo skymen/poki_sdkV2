@@ -1,14 +1,14 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.3.0.3
+### Version 2.4.2.0
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.3.0.3.c3addon/skymen_pokiSDK-2.3.0.3.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.4.2.0.c3addon/skymen_pokiSDK-2.4.2.0.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
-#### What's New in 2.3.0.3
-- **Fixed:** removed WIP code that I forgot to remove before pushing last update
+#### What's New in 2.4.2.0
+- **Fixed:** Fixed language files causing a build error
 
 <sub>[View full changelog](#changelog)</sub>
 
@@ -66,11 +66,12 @@ npm run dev
 | Get Token | Fetch a short-lived JWT token for the current user. The token expires in 1 minute. |  |
 | Login | Prompt the user to log in. If the user logs in, the page will refresh. If already logged in, resolves immediately. |  |
 | Interstitial | Request an interstitial ad | Tag             *(string)* <br> |
-| Rewarded | Request a rewarded ad | Tag             *(string)* <br> |
+| Rewarded | Request a rewarded ad | Tag             *(string)* <br>Size             *(combo)* <br> |
 | Send Event | Send an analytics event | Category             *(string)* <br>What             *(string)* <br>Action             *(string)* <br> |
 | Gameplay Start | Notify the SDK that the gameplay has started |  |
 | Gameplay Stop | Notify the SDK that the gameplay has stopped |  |
 | Loading End | Manually notify the SDK that the game has finished loading |  |
+| Get Shareable URL | Generate a shareable Poki URL with custom parameters. Parameters are passed as a JSON string. | Params             *(string)* <br> |
 | Move Pill | Reposition the Poki Pill on mobile. topPercent (0-50) sets vertical position as percentage from top, topPx is additional pixel offset (positive moves down, negative moves up) | Top Percent             *(number)* <br>Top Pixels             *(number)* <br> |
 | Open External Link | Open an external link using Poki's openExternalLink API | URL             *(string)* <br> |
 | Submit Score | Submit a score using Poki's submitScore API | Name             *(string)* <br>Score             *(number)* <br> |
@@ -89,6 +90,7 @@ npm run dev
 | On Rewarded Complete | Triggered when a rewarded ad is completed | Tag *(string)* <br> |
 | SDK Is Enabled | Check if the SDK is enabled |  |
 | SDK Is Loaded | Check if the SDK is loaded |  |
+| On Shareable URL | Triggered when a shareable URL has been generated |  |
 
 
 ---
@@ -100,10 +102,22 @@ npm run dev
 | Username | The username of the currently logged-in user | string |  | 
 | LastAdTag | Last Ad Tag | string |  | 
 | LastRewardedSuccess | Last Rewarded Success | number |  | 
+| ShareableURL | The last generated shareable URL | string |  | 
+| URLParam | Get a URL parameter value by name | string | Name *(string)* <br> | 
 
 
 ---
 ## Changelog
+
+**2.4.2.0**
+- **Fixed:** Fixed language files causing a build error
+
+**2.4.1.0**
+- **Added:** Added experimental support for submit score
+
+**2.4.0.0**
+- **Added:** Support for Shareable URLS and URL Params
+- **Added:** Support for Rewarded ad sizes
 
 **2.3.0.3**
 - **Fixed:** removed WIP code that I forgot to remove before pushing last update

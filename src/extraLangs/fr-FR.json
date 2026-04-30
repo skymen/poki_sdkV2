@@ -87,9 +87,14 @@
                 "name": "Tag",
                 "desc": "Le tag de la publicité"
               },
-              "size": {
+              "Size": {
                 "name": "Taille",
-                "desc": "La taille de la publicité"
+                "desc": "La taille de la publicité",
+                "items": {
+                  "Small": "Petit",
+                  "Medium": "Moyen",
+                  "Large": "Grand"
+                }
               }
             }
           },
