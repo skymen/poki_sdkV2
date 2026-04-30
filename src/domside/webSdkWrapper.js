@@ -6,11 +6,11 @@ preventWeirdInputs();
 let sdk;
 let currentSdk = null;
 let enabled = false;
-let submitScore = () => {};
 const sdkContext = {
   hasUserInteracted: false,
   pendingGameplayStart: false,
   gameplayStarted: false,
+  submitScore: () => {},
 };
 
 let supportedNetworks = [
@@ -45,7 +45,7 @@ let supportedNetworks = [
           sdk
             .init({
               submitScore: cb => {
-                submitScore = cb;
+                sdkContext.submitScore = cb;
               },
             })
             .then(() => {
@@ -149,7 +149,7 @@ let supportedNetworks = [
           }
         });
         listen("submitScore", (name, score) => {
-          submitScore(name, score);
+          sdkContext.submitScore(name, score);
         });
       },
     },
