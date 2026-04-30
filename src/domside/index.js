@@ -26,6 +26,10 @@ export default function (parentClass) {
         ],
         ["Login", this._onLogin.bind(this)],
         ["GetToken", () => WebSdkWrapper.getToken()],
+        [
+          "GetShareableURL",
+          (data) => WebSdkWrapper.shareableURL(data.params),
+        ],
       ]);
     }
 
@@ -66,6 +70,11 @@ export default function (parentClass) {
 
       await WebSdkWrapper.init("Poki", debug, config);
 
+      const urlParams = {};
+      new URLSearchParams(window.location.search).forEach((value, key) => {
+        urlParams[key] = value;
+      });
+
       return {
         enabled: WebSdkWrapper.enabled,
         hasAds: WebSdkWrapper.hasAds(),
@@ -73,6 +82,7 @@ export default function (parentClass) {
         hasRewardedAds: WebSdkWrapper.hasRewardedAds(),
         hasAccounts: WebSdkWrapper.hasAccounts(),
         hasToken: WebSdkWrapper.hasToken(),
+        urlParams,
       };
     }
   };

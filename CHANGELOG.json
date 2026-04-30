@@ -33,5 +33,10 @@
     "added": "",
     "changed": "",
     "fixed": "removed WIP code that I forgot to remove before pushing last update"
+  },
+  "2.4.0.0": {
+    "added": "Support for Shareable URLS and URL Params\nSupport for Rewarded ad sizes",
+    "changed": "",
+    "fixed": ""
   }
 }

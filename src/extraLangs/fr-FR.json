@@ -86,6 +86,10 @@
               "tag": {
                 "name": "Tag",
                 "desc": "Le tag de la publicité"
+              },
+              "size": {
+                "name": "Taille",
+                "desc": "La taille de la publicité"
               }
             }
           },
@@ -164,6 +168,17 @@
               }
             }
           },
+          "GetShareableURL": {
+            "list-name": "Obtenir URL partageable",
+            "display-text": "Obtenir une URL partageable avec les paramètres [i]{0}[/i]",
+            "description": "Génère une URL partageable Poki avec des paramètres personnalisés. Les paramètres sont passés sous forme de chaîne JSON.",
+            "params": {
+              "params": {
+                "name": "Paramètres",
+                "desc": "Chaîne JSON des paramètres"
+              }
+            }
+          },
           "SubmitScore": {
             "list-name": "Soumettre un score",
             "display-text": "Soumettre un score [i]{0}[/i] : [i]{1}[/i]",
@@ -221,6 +236,12 @@
             "description": "Vérifie si le SDK est chargé",
             "params": {}
           },
+          "OnShareableURL": {
+            "list-name": "À l'obtention de l'URL partageable",
+            "display-text": "À la génération de l'URL partageable",
+            "description": "Déclenché lorsqu'une URL partageable a été générée",
+            "params": {}
+          },
           "IsLoggedIn": {
             "list-name": "Est connecté",
             "display-text": "L'utilisateur est connecté",
@@ -271,6 +292,21 @@
             "translated-name": "Jeton",
             "description": "Le dernier jeton JWT d'authentification récupéré",
             "params": {}
+          },
+          "ShareableURL": {
+            "translated-name": "URLPartageable",
+            "description": "La dernière URL partageable générée",
+            "params": {}
+          },
+          "URLParam": {
+            "translated-name": "ParamètreURL",
+            "description": "Obtenir la valeur d'un paramètre d'URL par nom",
+            "params": {
+              "name": {
+                "name": "Nom",
+                "desc": "Le nom du paramètre d'URL"
+              }
+            }
           }
         }
       }

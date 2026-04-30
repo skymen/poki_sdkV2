@@ -16,6 +16,8 @@ export default function (parentClass) {
       this.hasToken = false;
       this._currentUser = null;
       this._currentToken = null;
+      this._shareableURL = "";
+      this._urlParams = {};
       this._lastLoginError = "";
       this._willSuspend = false;
 
@@ -108,13 +110,14 @@ export default function (parentClass) {
             debug: this._debugModeActive,
             config: this.config,
           })
-            .then(({ enabled, hasAds, hasInterstitialAds, hasRewardedAds, hasAccounts, hasToken }) => {
+            .then(({ enabled, hasAds, hasInterstitialAds, hasRewardedAds, hasAccounts, hasToken, urlParams }) => {
               this.sdkLoaded = enabled;
               this.hasAds = hasAds;
               this.hasInterstitialAds = hasInterstitialAds;
               this.hasRewardedAds = hasRewardedAds;
               this.hasAccounts = hasAccounts;
               this.hasToken = hasToken;
+              this._urlParams = urlParams || {};
             })
             .catch(console.error)
         );
