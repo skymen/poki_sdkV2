@@ -10,6 +10,7 @@ const sdkContext = {
   hasUserInteracted: false,
   pendingGameplayStart: false,
   gameplayStarted: false,
+  submitScore: () => {},
 };
 
 let supportedNetworks = [
@@ -42,7 +43,11 @@ let supportedNetworks = [
       init(debug = false, data) {
         return new Promise((resolve) => {
           sdk
-            .init()
+            .init({
+              submitScore: cb => {
+                sdkContext.submitScore = cb;
+              },
+            })
             .then(() => {
               resolve();
             })
@@ -142,6 +147,9 @@ let supportedNetworks = [
           } else {
             window.open(url, "_blank");
           }
+        });
+        listen("submitScore", (name, score) => {
+          sdkContext.submitScore(name, score);
         });
       },
     },
@@ -313,6 +321,9 @@ const Wrapper = {
       return;
     }
     dispatch("openExternalLink", url);
+  },
+  submitScore(name, score) {
+    dispatch("submitScore", name, score);
   },
   login() {
     if (

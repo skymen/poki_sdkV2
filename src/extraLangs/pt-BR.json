@@ -178,6 +178,21 @@
                 "desc": "String JSON dos parâmetros"
               }
             }
+          },
+          "SubmitScore": {
+            "list-name": "Enviar pontuação",
+            "display-text": "Enviar pontuação [i]{0}[/i]: [i]{1}[/i]",
+            "description": "Envia uma pontuação usando a API submitScore do Poki",
+            "params": {
+              "name": {
+                "name": "Nome",
+                "desc": "O nome da pontuação"
+              },
+              "score": {
+                "name": "Pontuação",
+                "desc": "A pontuação a ser enviada"
+              }
+            }
           }
         },
         "conditions": {

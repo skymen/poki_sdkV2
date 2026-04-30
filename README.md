@@ -73,6 +73,7 @@ npm run dev
 | Loading End | Manually notify the SDK that the game has finished loading |  |
 | Move Pill | Reposition the Poki Pill on mobile. topPercent (0-50) sets vertical position as percentage from top, topPx is additional pixel offset (positive moves down, negative moves up) | Top Percent             *(number)* <br>Top Pixels             *(number)* <br> |
 | Open External Link | Open an external link using Poki's openExternalLink API | URL             *(string)* <br> |
+| Submit Score | Submit a score using Poki's submitScore API | Name             *(string)* <br>Score             *(number)* <br> |
 
 
 ---

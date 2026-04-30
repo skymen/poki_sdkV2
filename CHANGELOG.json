@@ -38,5 +38,10 @@
     "added": "Support for Shareable URLS and URL Params\nSupport for Rewarded ad sizes",
     "changed": "",
     "fixed": ""
+  },
+  "2.4.1.0": {
+    "added": "Added experimental support for submit score",
+    "changed": "",
+    "fixed": ""
   }
 }

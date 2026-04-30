@@ -178,6 +178,21 @@
                 "desc": "Chaîne JSON des paramètres"
               }
             }
+          },
+          "SubmitScore": {
+            "list-name": "Soumettre un score",
+            "display-text": "Soumettre un score [i]{0}[/i] : [i]{1}[/i]",
+            "description": "Soumet un score en utilisant l'API submitScore de Poki",
+            "params": {
+              "name": {
+                "name": "Nom",
+                "desc": "Le nom du joueur"
+              },
+              "score": {
+                "name": "Score",
+                "desc": "Le score à soumettre"
+              }
+            }
           }
         },
         "conditions": {
