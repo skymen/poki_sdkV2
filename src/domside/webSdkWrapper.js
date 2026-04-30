@@ -350,6 +350,16 @@ const Wrapper = {
   hasToken() {
     return currentSdk && currentSdk.hasToken ? 1 : 0;
   },
+  shareableURL(params) {
+    if (!sdk || !sdk.shareableURL) return Promise.resolve("");
+    let parsed = {};
+    try {
+      parsed = JSON.parse(params);
+    } catch (e) {
+      parsed = {};
+    }
+    return sdk.shareableURL(parsed);
+  },
 };
 
 export default Wrapper;

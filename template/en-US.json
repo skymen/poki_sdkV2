@@ -92,12 +92,21 @@
           },
           "Rewarded": {
             "list-name": "Rewarded",
-            "display-text": "Request rewarded ad [i]{0}[/i]",
+            "display-text": "Request {1} rewarded ad [i]{0}[/i]",
             "description": "Request a rewarded ad",
             "params": {
               "tag": {
                 "name": "Tag",
                 "desc": "The tag of the ad"
+              },
+              "Size": {
+                "name": "Size",
+                "desc": "The size of the ad",
+                "items": {
+                  "Small": "Small",
+                  "Medium": "Medium",
+                  "Large": "Large"
+                }
               }
             }
           },
@@ -137,6 +146,17 @@
             "display-text": "Loading End",
             "description": "Manually notify the SDK that the game has finished loading",
             "params": {}
+          },
+          "GetShareableURL": {
+            "list-name": "Get Shareable URL",
+            "display-text": "Get shareable URL with params [i]{0}[/i]",
+            "description": "Generate a shareable Poki URL with custom parameters. Parameters are passed as a JSON string.",
+            "params": {
+              "params": {
+                "name": "Params",
+                "desc": "JSON string of parameters (e.g. {\"id\":\"myid\",\"type\":\"mytype\"})"
+              }
+            }
           },
           "MovePill": {
             "list-name": "Move Pill",
@@ -229,6 +249,12 @@
             "display-text": "SDK is loaded",
             "description": "Check if the SDK is loaded",
             "params": {}
+          },
+          "OnShareableURL": {
+            "list-name": "On Shareable URL",
+            "display-text": "On shareable URL generated",
+            "description": "Triggered when a shareable URL has been generated",
+            "params": {}
           }
         },
         "expressions": {
@@ -256,6 +282,21 @@
             "translated-name": "LastRewardedSuccess",
             "description": "Last Rewarded Success",
             "params": {}
+          },
+          "ShareableURL": {
+            "translated-name": "ShareableURL",
+            "description": "The last generated shareable URL",
+            "params": {}
+          },
+          "URLParam": {
+            "translated-name": "URLParam",
+            "description": "Get a URL parameter value by name",
+            "params": {
+              "name": {
+                "name": "Name",
+                "desc": "The name of the URL parameter"
+              }
+            }
           }
         }
       }

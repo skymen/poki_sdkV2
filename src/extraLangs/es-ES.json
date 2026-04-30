@@ -86,6 +86,10 @@
               "tag": {
                 "name": "Etiqueta",
                 "desc": "La etiqueta del anuncio"
+              },
+              "size": {
+                "name": "Tamaño",
+                "desc": "El tamaño del anuncio"
               }
             }
           },
@@ -163,6 +167,17 @@
                 "desc": "La URL a abrir"
               }
             }
+          },
+          "GetShareableURL": {
+            "list-name": "Obtener URL compartible",
+            "display-text": "Obtener URL compartible con parámetros [i]{0}[/i]",
+            "description": "Genera una URL compartible de Poki con parámetros personalizados. Los parámetros se pasan como cadena JSON.",
+            "params": {
+              "params": {
+                "name": "Parámetros",
+                "desc": "Cadena JSON de parámetros"
+              }
+            }
           }
         },
         "conditions": {
@@ -204,6 +219,12 @@
             "list-name": "SDK cargado",
             "display-text": "El SDK está cargado",
             "description": "Comprueba si el SDK está cargado",
+            "params": {}
+          },
+          "OnShareableURL": {
+            "list-name": "Al obtener URL compartible",
+            "display-text": "Al generar URL compartible",
+            "description": "Se activa cuando se ha generado una URL compartible",
             "params": {}
           },
           "IsLoggedIn": {
@@ -256,6 +277,21 @@
             "translated-name": "Token",
             "description": "El último token JWT de autenticación obtenido",
             "params": {}
+          },
+          "ShareableURL": {
+            "translated-name": "URLCompartible",
+            "description": "La última URL compartible generada",
+            "params": {}
+          },
+          "URLParam": {
+            "translated-name": "ParámetroURL",
+            "description": "Obtener el valor de un parámetro de URL por nombre",
+            "params": {
+              "name": {
+                "name": "Nombre",
+                "desc": "El nombre del parámetro de URL"
+              }
+            }
           }
         }
       }
