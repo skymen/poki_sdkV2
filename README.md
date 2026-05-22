@@ -1,14 +1,14 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.4.2.0
+### Version 2.4.2.1
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.4.2.0.c3addon/skymen_pokiSDK-2.4.2.0.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.4.2.1.c3addon/skymen_pokiSDK-2.4.2.1.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
-#### What's New in 2.4.2.0
-- **Fixed:** Fixed language files causing a build error
+#### What's New in 2.4.2.1
+- **Fixed:** properly handle login failed
 
 <sub>[View full changelog](#changelog)</sub>
 
@@ -108,6 +108,9 @@ npm run dev
 
 ---
 ## Changelog
+
+**2.4.2.1**
+- **Fixed:** properly handle login failed
 
 **2.4.2.0**
 - **Fixed:** Fixed language files causing a build error

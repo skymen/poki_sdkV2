@@ -48,5 +48,10 @@
     "added": "",
     "changed": "",
     "fixed": "Fixed language files causing a build error"
+  },
+  "2.4.2.1": {
+    "added": "",
+    "changed": "",
+    "fixed": "properly handle login failed"
   }
 }
