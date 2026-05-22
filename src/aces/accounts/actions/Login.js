@@ -12,10 +12,8 @@ export const config = {
 export const expose = true;
 
 export default async function () {
-  try {
-    await this._postToDOMAsync("Login");
-  } catch (e) {
-    this._lastLoginError = e?.message || "Login failed";
+  const result = await this._postToDOMAsync("Login");
+  if (!result || !result.ok) {
     this._trigger("OnLoginFailed");
   }
 }

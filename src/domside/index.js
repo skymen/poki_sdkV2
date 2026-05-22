@@ -47,7 +47,13 @@ export default function (parentClass) {
     }
 
     async _onLogin() {
-      await WebSdkWrapper.login();
+      try {
+        await WebSdkWrapper.login();
+      } catch (e) {
+        // User cancelled or login failed - treat both the same.
+        this.PostToRuntime("UserChanged", null);
+        return { ok: false };
+      }
       // If we reach here, user was already logged in (no page refresh)
       // Fetch user and notify runtime
       if (WebSdkWrapper.hasAccounts()) {
@@ -58,6 +64,7 @@ export default function (parentClass) {
           this.PostToRuntime("UserChanged", null);
         }
       }
+      return { ok: true };
     }
 
     async Init({ debug, config }) {
