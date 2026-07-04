@@ -65,6 +65,7 @@ export default function (parentClass) {
         ["SuspendRuntime", this._suspendRuntime.bind(this)],
         ["ResumeRuntime", this._resumeRuntime.bind(this)],
         ["UserChanged", this._onUserChanged.bind(this)],
+        ["AdStarted", this._onAdStarted.bind(this)],
       ]);
 
       if (this._loadingNotification === 0) {
@@ -149,6 +150,18 @@ export default function (parentClass) {
     _onUserChanged(user) {
       this._currentUser = user;
       this._trigger("OnUserChanged");
+    }
+
+    _onAdStarted(data) {
+      const type = data && data.type;
+      if (type === "interstitial") {
+        this._trigger("OnInterstitialStarted");
+        this._trigger("OnAnyInterstitialStarted");
+      } else if (type === "rewarded") {
+        this._trigger("OnRewardedStarted");
+        this._trigger("OnAnyRewardedStarted");
+      }
+      this._trigger("OnAnyAdStarted");
     }
 
     _suspendRuntime() {

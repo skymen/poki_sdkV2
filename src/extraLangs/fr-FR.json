@@ -229,6 +229,46 @@
               }
             }
           },
+          "OnInterstitialStarted": {
+            "list-name": "Au démarrage de l'interstitiel",
+            "display-text": "Au démarrage de l'interstitiel [i]{0}[/i]",
+            "description": "Déclenché lorsqu'une publicité interstitielle avec le tag indiqué démarre",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "Le tag de la publicité"
+              }
+            }
+          },
+          "OnRewardedStarted": {
+            "list-name": "Au démarrage de la récompense",
+            "display-text": "Au démarrage de la récompense [i]{0}[/i]",
+            "description": "Déclenché lorsqu'une publicité récompensée avec le tag indiqué démarre",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "Le tag de la publicité"
+              }
+            }
+          },
+          "OnAnyInterstitialStarted": {
+            "list-name": "Au démarrage de tout interstitiel",
+            "display-text": "Au démarrage de tout interstitiel",
+            "description": "Déclenché lorsqu'une publicité interstitielle démarre, quel que soit le tag",
+            "params": {}
+          },
+          "OnAnyRewardedStarted": {
+            "list-name": "Au démarrage de toute récompense",
+            "display-text": "Au démarrage de toute récompense",
+            "description": "Déclenché lorsqu'une publicité récompensée démarre, quel que soit le tag",
+            "params": {}
+          },
+          "OnAnyAdStarted": {
+            "list-name": "Au démarrage de toute publicité",
+            "display-text": "Au démarrage de toute publicité",
+            "description": "Déclenché lorsqu'une publicité (interstitielle ou récompensée) démarre",
+            "params": {}
+          },
           "IsEnabled": {
             "list-name": "Le SDK est activé",
             "display-text": "Le SDK est activé",

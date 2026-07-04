@@ -229,6 +229,46 @@
               }
             }
           },
+          "OnInterstitialStarted": {
+            "list-name": "Al iniciar intersticial",
+            "display-text": "Al iniciar intersticial [i]{0}[/i]",
+            "description": "Se activa cuando un anuncio intersticial con la etiqueta indicada comienza a reproducirse",
+            "params": {
+              "tag": {
+                "name": "Etiqueta",
+                "desc": "La etiqueta del anuncio"
+              }
+            }
+          },
+          "OnRewardedStarted": {
+            "list-name": "Al iniciar recompensado",
+            "display-text": "Al iniciar recompensado [i]{0}[/i]",
+            "description": "Se activa cuando un anuncio recompensado con la etiqueta indicada comienza a reproducirse",
+            "params": {
+              "tag": {
+                "name": "Etiqueta",
+                "desc": "La etiqueta del anuncio"
+              }
+            }
+          },
+          "OnAnyInterstitialStarted": {
+            "list-name": "Al iniciar cualquier intersticial",
+            "display-text": "Al iniciar cualquier intersticial",
+            "description": "Se activa cuando cualquier anuncio intersticial comienza a reproducirse, sin importar la etiqueta",
+            "params": {}
+          },
+          "OnAnyRewardedStarted": {
+            "list-name": "Al iniciar cualquier recompensado",
+            "display-text": "Al iniciar cualquier recompensado",
+            "description": "Se activa cuando cualquier anuncio recompensado comienza a reproducirse, sin importar la etiqueta",
+            "params": {}
+          },
+          "OnAnyAdStarted": {
+            "list-name": "Al iniciar cualquier anuncio",
+            "display-text": "Al iniciar cualquier anuncio",
+            "description": "Se activa cuando cualquier anuncio (intersticial o recompensado) comienza a reproducirse",
+            "params": {}
+          },
           "IsEnabled": {
             "list-name": "SDK activado",
             "display-text": "El SDK está activado",

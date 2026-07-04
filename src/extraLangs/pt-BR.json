@@ -229,6 +229,46 @@
               }
             }
           },
+          "OnInterstitialStarted": {
+            "list-name": "Ao Iniciar Intersticial",
+            "display-text": "Ao Iniciar Intersticial [i]{0}[/i]",
+            "description": "Disparado quando um anúncio intersticial com a tag fornecida começa a ser exibido",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "A tag do anúncio"
+              }
+            }
+          },
+          "OnRewardedStarted": {
+            "list-name": "Ao Iniciar Recompensado",
+            "display-text": "Ao Iniciar Recompensado [i]{0}[/i]",
+            "description": "Disparado quando um anúncio recompensado com a tag fornecida começa a ser exibido",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "A tag do anúncio"
+              }
+            }
+          },
+          "OnAnyInterstitialStarted": {
+            "list-name": "Ao Iniciar Qualquer Intersticial",
+            "display-text": "Ao iniciar qualquer intersticial",
+            "description": "Disparado quando qualquer anúncio intersticial começa a ser exibido, independentemente da tag",
+            "params": {}
+          },
+          "OnAnyRewardedStarted": {
+            "list-name": "Ao Iniciar Qualquer Recompensado",
+            "display-text": "Ao iniciar qualquer recompensado",
+            "description": "Disparado quando qualquer anúncio recompensado começa a ser exibido, independentemente da tag",
+            "params": {}
+          },
+          "OnAnyAdStarted": {
+            "list-name": "Ao Iniciar Qualquer Anúncio",
+            "display-text": "Ao iniciar qualquer anúncio",
+            "description": "Disparado quando qualquer anúncio (intersticial ou recompensado) começa a ser exibido",
+            "params": {}
+          },
           "IsEnabled": {
             "list-name": "SDK Está Ativado",
             "display-text": "SDK está ativado",

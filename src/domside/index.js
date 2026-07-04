@@ -68,8 +68,8 @@ export default function (parentClass) {
     }
 
     async Init({ debug, config }) {
-      WebSdkWrapper.onAdStarted(() => {
-        this.PostToRuntime("AdStarted");
+      WebSdkWrapper.onAdStarted((type) => {
+        this.PostToRuntime("AdStarted", { type });
       });
       WebSdkWrapper.onUnlockAllLevels(() => {
         this.PostToRuntime("UnlockAllLevels");

@@ -231,6 +231,35 @@
             "description": "Last Rewarded Success",
             "params": {}
           },
+          "OnAnyAdStarted": {
+            "list-name": "On Any Ad Started",
+            "display-text": "On any ad started",
+            "description": "Triggered when any ad (interstitial or rewarded) starts playing",
+            "params": {}
+          },
+          "OnAnyInterstitialStarted": {
+            "list-name": "On Any Interstitial Started",
+            "display-text": "On any interstitial started",
+            "description": "Triggered when any interstitial ad starts playing, regardless of tag",
+            "params": {}
+          },
+          "OnAnyRewardedStarted": {
+            "list-name": "On Any Rewarded Started",
+            "display-text": "On any rewarded started",
+            "description": "Triggered when any rewarded ad starts playing, regardless of tag",
+            "params": {}
+          },
+          "OnInterstitialStarted": {
+            "list-name": "On Interstitial Started",
+            "display-text": "On Interstitial [i]{0}[/i] Started",
+            "description": "Triggered when an interstitial ad with the given tag starts playing",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "The tag of the ad"
+              }
+            }
+          },
           "OnIntertsitialComplete": {
             "list-name": "On Interstitial Complete",
             "display-text": "On Interstitial [i]{0}[/i] Complete",
@@ -246,6 +275,17 @@
             "list-name": "On Rewarded Complete",
             "display-text": "On Rewarded [i]{0}[/i] Complete",
             "description": "Triggered when a rewarded ad is completed",
+            "params": {
+              "tag": {
+                "name": "Tag",
+                "desc": "The tag of the ad"
+              }
+            }
+          },
+          "OnRewardedStarted": {
+            "list-name": "On Rewarded Started",
+            "display-text": "On Rewarded [i]{0}[/i] Started",
+            "description": "Triggered when a rewarded ad with the given tag starts playing",
             "params": {
               "tag": {
                 "name": "Tag",

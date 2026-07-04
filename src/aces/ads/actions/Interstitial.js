@@ -20,6 +20,7 @@ export const config = {
 export const expose = true;
 
 export default async function (tag) {
+  this.lastAdTag = tag;
   this._suspendRuntime();
   await this._postToDOMAsync("Interstitial");
   this._resumeRuntime();

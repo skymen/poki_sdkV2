@@ -1,14 +1,14 @@
 <img src="./src/icon.svg" width="100" /><br>
 # Poki SDK
 <i>Simple plugin for games to be hosted on the Poki Platform (https://sdk.poki.com/)</i> <br>
-### Version 2.4.2.1
+### Version 2.5.0.0
 
-[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.4.2.1.c3addon/skymen_pokiSDK-2.4.2.1.c3addon)
+[<img src="https://placehold.co/200x50/4493f8/FFF?text=Download&font=montserrat" width="200"/>](https://github.com/skymen/poki_sdkV2/releases/download/skymen_pokiSDK-2.5.0.0.c3addon/skymen_pokiSDK-2.5.0.0.c3addon)
 <br>
 <sub> [See all releases](https://github.com/skymen/poki_sdkV2/releases) </sub> <br>
 
-#### What's New in 2.4.2.1
-- **Fixed:** properly handle login failed
+#### What's New in 2.5.0.0
+- **Added:** Added Ad started callbacks and triggers for both rewarded and interstitial ads
 
 <sub>[View full changelog](#changelog)</sub>
 
@@ -86,8 +86,13 @@ npm run dev
 | On Login Failed | Triggered when login fails (user closed auth panel or login timed out) |  |
 | On User Changed | Triggered when the user state changes (after loading or after login) |  |
 | Last Rewarded Success | Last Rewarded Success |  |
+| On Any Ad Started | Triggered when any ad (interstitial or rewarded) starts playing |  |
+| On Any Interstitial Started | Triggered when any interstitial ad starts playing, regardless of tag |  |
+| On Any Rewarded Started | Triggered when any rewarded ad starts playing, regardless of tag |  |
+| On Interstitial Started | Triggered when an interstitial ad with the given tag starts playing | Tag *(string)* <br> |
 | On Interstitial Complete | Triggered when an interstitial ad is completed | Tag *(string)* <br> |
 | On Rewarded Complete | Triggered when a rewarded ad is completed | Tag *(string)* <br> |
+| On Rewarded Started | Triggered when a rewarded ad with the given tag starts playing | Tag *(string)* <br> |
 | SDK Is Enabled | Check if the SDK is enabled |  |
 | SDK Is Loaded | Check if the SDK is loaded |  |
 | On Shareable URL | Triggered when a shareable URL has been generated |  |
@@ -108,6 +113,9 @@ npm run dev
 
 ---
 ## Changelog
+
+**2.5.0.0**
+- **Added:** Added Ad started callbacks and triggers for both rewarded and interstitial ads
 
 **2.4.2.1**
 - **Fixed:** properly handle login failed

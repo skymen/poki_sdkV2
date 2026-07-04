@@ -34,6 +34,7 @@ export default async function (tag, size) {
     size = 0;
   }
   let sizeStr = Object.keys(adSizes[size])[0];
+  this.lastAdTag = tag;
   this._suspendRuntime();
   const result = await this._postToDOMAsync("Rewarded", sizeStr.toLowerCase());
   this.lastRewardedSuccess = result;

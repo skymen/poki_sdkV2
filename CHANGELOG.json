@@ -53,5 +53,10 @@
     "added": "",
     "changed": "",
     "fixed": "properly handle login failed"
+  },
+  "2.5.0.0": {
+    "added": "Added Ad started callbacks and triggers for both rewarded and interstitial ads",
+    "changed": "",
+    "fixed": ""
   }
 }

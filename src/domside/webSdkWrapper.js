@@ -113,10 +113,14 @@ let supportedNetworks = [
         });
         listen("interstitial", () => {
           beacon("interstitial");
-          dispatch("adStarted", sdkContext.lastRequestedAd);
-          sdk.commercialBreak().then(() => {
-            dispatch("interstitialEnd", true);
-          });
+          let lastRequestedAd = sdkContext.lastRequestedAd;
+          sdk
+            .commercialBreak(() => {
+              dispatch("adStarted", lastRequestedAd);
+            })
+            .then(() => {
+              dispatch("interstitialEnd", true);
+            });
         });
         listen("rewarded", (size) => {
           beacon("rewarded");
