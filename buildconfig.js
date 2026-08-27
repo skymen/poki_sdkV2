@@ -23,4 +23,9 @@ export const publishConfig = {
   addonUrl: "https://www.construct.net/en/make-games/addons/1409/poki",
   itchioPage: "", // Format: "username/page-id" (taken from https://username.itch.io/page-id)
   autoGenReadme: true,
+  // How much the Construct release notes field will take, BBCode markup
+  // included. Measured at a little over 1137 characters, so this sits just
+  // under. Notes longer than this lose their oldest changes, which are linked
+  // instead.
+  releaseNotesLimit: 1130,
 };

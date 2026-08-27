@@ -38,33 +38,22 @@ jobs:
       - name: Extract changelog for version
         id: changelog
         run: |
-          if [ -f "CHANGELOG.json" ]; then
-            version="${{ steps.getfile.outputs.version }}"
-            # Extract changelog for this version from JSON
-            changelog=$(node -e "
-              const fs = require('fs');
-              const data = JSON.parse(fs.readFileSync('CHANGELOG.json', 'utf-8'));
-              if (data['$version']) {
-                const v = data['$version'];
-                let output = [];
-                if (v.added) output.push('**Added:**\\n' + v.added);
-                if (v.changed) output.push('**Changed:**\\n' + v.changed);
-                if (v.fixed) output.push('**Fixed:**\\n' + v.fixed);
-                console.log(output.join('\\n\\n'));
-              }
-            ")
-            if [ -n "$changelog" ]; then
-              echo "Found changelog for version ${{ steps.getfile.outputs.version }}"
-              echo "changelog<<EOF" >> $GITHUB_OUTPUT
-              echo "$changelog" >> $GITHUB_OUTPUT
-              echo "EOF" >> $GITHUB_OUTPUT
-              echo "has_changelog=true" >> $GITHUB_OUTPUT
-            else
-              echo "No changelog entry found for this version"
-              echo "has_changelog=false" >> $GITHUB_OUTPUT
-            fi
+          version="${{ steps.getfile.outputs.version }}"
+
+          # The GitHub release covers this version alone; it gets one per push.
+          # The Construct notes are built further down, once the version that is
+          # actually live over there is known.
+          node build/changelog.js --version="$version" --format=markdown > /tmp/notes.md
+
+          if [ -s /tmp/notes.md ]; then
+            echo "Found changelog for version $version"
+            echo "has_changelog=true" >> $GITHUB_OUTPUT
+            echo "changelog<<CHANGELOG_EOF" >> $GITHUB_OUTPUT
+            cat /tmp/notes.md >> $GITHUB_OUTPUT
+            echo "" >> $GITHUB_OUTPUT
+            echo "CHANGELOG_EOF" >> $GITHUB_OUTPUT
           else
-            echo "No CHANGELOG.json file found"
+            echo "No changelog entry found for version $version"
             echo "has_changelog=false" >> $GITHUB_OUTPUT
           fi
 
@@ -103,29 +92,75 @@ jobs:
         if: steps.check.outputs.publish == 'true'
         id: url
         run: |
-          url=$(grep -oP 'addonUrl:\s?"\K[^"]*' config.caw.js | cut -d '"' -f 1)
+          url=$(node -e "import('./buildconfig.js').then(m => console.log(m.publishConfig?.addonUrl ?? ''))")
           echo "Addon Url: $url"
           if [[ -z "$url" ]]; then
             echo "Addon Url is not set. skip publishing."
-            exit 1
           fi
           echo "url=$url" >> $GITHUB_OUTPUT
 
-      - name: Publish to Construct 3
-        if: steps.check.outputs.publish == 'true'
+      - name: Get the version already published
+        if: steps.check.outputs.publish == 'true' && steps.url.outputs.url != ''
+        id: live
         run: |
-          if [ "${{ steps.changelog.outputs.has_changelog }}" = "true" ]; then
-            release_notes="${{ steps.changelog.outputs.changelog }}"
+          raw="$(c3addon releases \
+            --addon-url "${{ steps.url.outputs.url }}" \
+            --username "${{ secrets.C3_AUTH_USER }}" \
+            --password "${{ secrets.C3_AUTH_PASSWORD }}" \
+            --latest 2>/dev/null | tail -n 1 || true)"
+
+          # The command logs as it goes, so only take the answer if it looks
+          # like a version rather than the last thing it happened to print.
+          latest=""
+          if echo "$raw" | grep -qE '^[0-9]+(\.[0-9]+){1,3}$'; then
+            latest="$raw"
+          fi
+
+          echo "Latest published on Construct: ${latest:-unknown}"
+          echo "version=$latest" >> $GITHUB_OUTPUT
+
+          if [ -n "$latest" ] && [ "$latest" = "${{ steps.getfile.outputs.version }}" ]; then
+            echo "${{ steps.getfile.outputs.version }} is already the published release. Skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build the Construct release notes
+        if: steps.check.outputs.publish == 'true' && steps.url.outputs.url != '' && steps.live.outputs.skip != 'true'
+        run: |
+          # Everything released since Construct last saw one, so a run that
+          # failed to publish is not simply skipped over next time.
+          since=""
+          if [ -n "${{ steps.live.outputs.version }}" ]; then
+            since="--since=${{ steps.live.outputs.version }}"
+          fi
+
+          limit="$(node -e "import('./buildconfig.js').then(m => console.log(m.publishConfig?.releaseNotesLimit ?? 0))")"
+
+          node build/changelog.js \
+            --version="${{ steps.getfile.outputs.version }}" \
+            $since \
+            --format=bbcode \
+            --limit="$limit" > /tmp/notes.bbcode
+
+          echo "Release notes ($(wc -c < /tmp/notes.bbcode) of $limit chars):"
+          cat /tmp/notes.bbcode
+
+      - name: Publish to Construct 3
+        if: steps.check.outputs.publish == 'true' && steps.url.outputs.url != '' && steps.live.outputs.skip != 'true'
+        run: |
+          if [ -s /tmp/notes.bbcode ]; then
+            release_notes="$(cat /tmp/notes.bbcode)"
           else
             release_notes="Released via GitHub Actions"
           fi
-          c3addon publish \
-            --addonUrl '${{steps.url.outputs.url}}' \
-            --authUser ${{ secrets.C3_AUTH_USER }} \
-            --authPassword ${{ secrets.C3_AUTH_PASSWORD }} \
-            --uploadFile dist/${{ steps.getfile.outputs.filename }} \
-            --version ${{ steps.getfile.outputs.version }} \
-            --releaseNotes "$release_notes"
+
+          c3addon publish "dist/${{ steps.getfile.outputs.filename }}" \
+            --addon-url "${{ steps.url.outputs.url }}" \
+            --username "${{ secrets.C3_AUTH_USER }}" \
+            --password "${{ secrets.C3_AUTH_PASSWORD }}" \
+            --release-notes "$release_notes"
 
       - name: Check if itch.io variables are set
         id: check_itch
@@ -141,22 +176,24 @@ jobs:
         if: steps.check_itch.outputs.publish == 'true'
         id: itchio
         run: |
-          itchioPage=$(grep -oP 'itchioPage:\s?"\K[^"]*' buildconfig.js | cut -d '"' -f 1)
+          itchioPage=$(node -e "import('./buildconfig.js').then(m => console.log(m.publishConfig?.itchioPage ?? ''))")
           echo "Itch.io Page: $itchioPage"
           if [[ -z "$itchioPage" ]]; then
             echo "Itch.io Page is not set. skip itch.io publishing."
-            exit 1
+            echo "found=false" >> $GITHUB_OUTPUT
+            exit 0
           fi
 
           # Extract username and game ID from "username/game-id" format
           itchUsername=$(echo "$itchioPage" | cut -d '/' -f 1)
           itchGameId=$(echo "$itchioPage" | cut -d '/' -f 2)
 
+          echo "found=true" >> $GITHUB_OUTPUT
           echo "username=$itchUsername" >> $GITHUB_OUTPUT
           echo "gameId=$itchGameId" >> $GITHUB_OUTPUT
 
       - name: Publish to Itch.io
-        if: steps.check_itch.outputs.publish == 'true'
+        if: steps.check_itch.outputs.publish == 'true' && steps.itchio.outputs.found == 'true'
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{ secrets.BUTLER_API_KEY }}

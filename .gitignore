@@ -3,3 +3,7 @@ generated
 node_modules
 template/projectData.json
 .dev-server-running
+.DS_Store
+.khabot/
+.khabot-desktop/
+.khabot-studio/

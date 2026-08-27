@@ -58,5 +58,10 @@
     "added": "Added Ad started callbacks and triggers for both rewarded and interstitial ads",
     "changed": "",
     "fixed": ""
+  },
+  "2.5.0.1": {
+    "added": "",
+    "changed": "",
+    "fixed": "Fixed a bug that could cause naming conflicts on the domside"
   }
 }
